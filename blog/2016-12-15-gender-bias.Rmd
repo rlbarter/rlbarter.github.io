@@ -2,10 +2,13 @@
 title: "Gender Issues Roundtable Discussion: A Case Study in Uncomfortable Conversations"
 date: "2016-12-15T21:49:57-07:00"
 type: "post"
-author: "Ottoboni, Barter, Giordano, Stoudt"
+author: ""
 categories: ["Misc"]
 tags: ["discussion", "gender bias"]
 ---
+
+*by Kellie Ottoboni, Rebecca Barter, Ryan Giordano, Sara Stoudt*
+
 
 In 2015, UC Berkeley experienced a series of high-profile sexual harassment incidents, prompting the graduate students in the Statistics Department to hold a roundtable event. While this response was initiated by overt sexual harassment, our discussion extended to other subtler gender biases. This article outlines the events that lead to the roundtable’s inception, the details of organizing and hosting the event, and our thoughts on what did and didn’t work.
 
