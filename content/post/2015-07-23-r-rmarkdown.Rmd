@@ -1,6 +1,7 @@
 ---
 title: "The only reason one should ever use a pie chart"
 author: "Rebecca Barter"
+type: "post"
 date: 2016-07-23T21:13:14-05:00
 categories: ["R"]
 tags: ["R Markdown", "pie charts"]

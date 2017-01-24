@@ -1,6 +1,7 @@
 ---
 title: "Gender Issues Roundtable Discussion: A Case Study in Uncomfortable Conversations"
 date: "2016-12-15T21:49:57-07:00"
+type: "post"
 author: "Ottoboni, Barter, Giordano, Stoudt"
 categories: ["Misc"]
 tags: ["discussion", "gender bias"]
