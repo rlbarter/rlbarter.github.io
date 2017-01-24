@@ -1,11 +1,12 @@
-baseurl = "https://rlbarter.github.io/about/"
-relativeurls = true
+baseurl = "http://rlbarter.github.io/"
 languageCode = "en-us"
 title = "Rebecca Barter"
 theme = "hugo-future-imperfect"
-googleAnalytics = ""
+preserveTaxonomyNames = true
+paginate = 3
 disqusShortname = ""
-ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
+googleAnalytics = ""
+
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
@@ -14,7 +15,7 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
     url = "/about/"
 [[menu.main]]
     name = "Blog"
-    url = "/post/"
+    url = "/blog/"
 [[menu.main]]
     name = "CV"
     url = "/cv/"
@@ -31,17 +32,60 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
     name = "Twitter"
     url = "https://twitter.com/rlbarter"
 
+
 [params]
-    description = "Data meets narative"
+    # Sets the meta tag description, usually reserved for the main page
+    description          = "Rebecca Barter's website. Data meets narrative. HTML5 UP theme, Future Imperfect. Powered by Hugo"
+    # This will appear on the top left of the navigation bar
+    navbarTitle          = "Rebecca Barter"
+    # Social media buttons that appear on the sidebar
+    socialAppearAtTop    = true
+    socialAppearAtBottom = true
+    # set this to the section name if section is not post
+    viewMorePostLink     = "/blog/"
 
-    # options for highlight.js (version, additional languages, and theme)
-    highlightjsVersion = "9.9.0"
-    highlightjsLang = ["r", "yaml"]
-    highlightjsTheme = "github"
+# Optional Params
+    categoriesByCount    = true
+    includeReadingTime   = true
+    # The set of favicons used are based on the write-up from this link:
+    # https://github.com/audreyr/favicon-cheat-sheet
+    # Please see the favicon partial template for more information
+    loadFavicon          = false
+    faviconVersion       = ""
 
-    [params.logo]
-    url = "logo.png"
-    width = 50
-    height = 50
-    alt = "Logo"
+    # Load custom CSS or JavaScript files. This replaces the deprecated params
+    # minifiedFilesCSS and minifiedFilesJS. The variable is an array so that you
+    # can load multiple files if necessary. You can also load the standard theme
+    # files by adding the value, "default".
+    # customCSS            = ["default", "/path/to/file"]
+    # customJS             = ["default", "/path/to/file"]
 
+    # Loading min files for exampleSite
+    customCSS            = ["/css/main.min.css"]
+    customJS             = ["/js/main.min.js"]
+
+# parms.intro will appear on the sidebar
+# This is optional, but it's suggested to use
+[params.intro]
+    header    = "Rebecca Barter"
+
+    paragraph = "Data meets narrative"
+
+    about     = "Statistics PhD Student, Data Science Fellow and Avid Knitter."
+
+# This will also appear on the sidebar.
+# A width of less than 100px is recommended
+# This is optional
+[params.intro.pic]
+    src       = "/img/main/logo.jpg"
+    # modify your picture in the shape of a circle or
+    # future imperfect's hexagonal shape
+    circle    = false
+    imperfect = true
+    width     = ""
+    alt       = "Rebecca Barter"
+
+# Adjust the amount of recent posts on the sidebar.
+# This is optional. The default value 5 will be used
+[params.postAmount]
+    sidebar = 2
