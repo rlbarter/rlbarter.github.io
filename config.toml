@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "/about"
 relativeurls = true
 languageCode = "en-us"
 title = "Rebecca Barter"
