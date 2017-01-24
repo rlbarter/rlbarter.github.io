@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pie Charts on Rebecca Barter</title>
+    <link>/tags/pie-charts/index.xml</link>
+    <description>Recent content in Pie Charts on Rebecca Barter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="/tags/pie-charts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The only reason one should ever use a pie chart</title>
+      <link>/2016/07/23/the-only-reason-one-should-ever-use-a-pie-chart/</link>
+      <pubDate>Sat, 23 Jul 2016 21:13:14 -0500</pubDate>
+      
+      <guid>/2016/07/23/the-only-reason-one-should-ever-use-a-pie-chart/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;pie-charts-are-terrible&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Pie charts are terrible&lt;/h1&gt;
+&lt;p&gt;Pie charts are notoriously terrible for data visualization. Humans are genuinely bad at comparing angles. Thus, the only reason one should ever use a pie chart is to make beautiful pie-chart-art.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
+pie(
+  c(280, 60, 20),
+  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
+  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
+  init.angle = -50, border = NA
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;#####../content/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;Pyramid pie chart art.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: Pyramid pie chart art.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
