@@ -1,7 +1,7 @@
 ---
 title: "Projects (details to come!)"
 author: "Rebecca Barter"
-date: "2017-1-22"
+date: "2017-01-15T21:49:57-07:00"
 output: html_document
 ---
 
