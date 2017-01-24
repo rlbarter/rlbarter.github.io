@@ -6,7 +6,30 @@
     <description>Recent content on Rebecca Barter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 05 May 2016 21:48:51 -0700</lastBuildDate>
     <atom:link href="http://rlbarter.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About Rebecca</title>
+      <link>http://rlbarter.github.io/about/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>http://rlbarter.github.io/about/</guid>
+      <description>&lt;p&gt;Hi there! I&amp;rsquo;m Rebecca Barter. I&amp;rsquo;m so glad you&amp;rsquo;ve made it to my page.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m currently a third-year PhD student in the &lt;a href=&#34;http://statistics.berkeley.edu&#34;&gt;Department of Statistics&lt;/a&gt; at UC Berkeley, as well as a Data Science Fellow at the &lt;a href=&#34;https://bids.berkeley.edu&#34;&gt;Berkeley Institute for Data Science (BIDS)&lt;/a&gt;. I am jointly advised by Professors &lt;a href=&#34;https://www.stat.berkeley.edu/~binyu/Site/Welcome.html&#34;&gt;Bin Yu&lt;/a&gt; (UC Berkeley),&lt;a href=&#34;http://sekhon.berkeley.edu&#34;&gt; Jasjeet Sekhon&lt;/a&gt; (UC Berkeley) and &lt;a href=&#34;http://sarwallab.surgery.ucsf.edu&#34;&gt;Minnie Sarwal&lt;/a&gt; (UCSF). Together with &lt;a href=&#34;http://www.stat.berkeley.edu/~kellieotto/&#34;&gt;Kellie Ottoboni&lt;/a&gt;, I am the co-president of the &lt;a href=&#34;http://sgsa.berkeley.edu&#34;&gt;Statistics Graduate Student Association&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Prior to arriving at UC Berkeley, I was an undergraduate, and subsequently a research assistant with &lt;a href=&#34;http://www.maths.usyd.edu.au/u/jeany/&#34;&gt;Professor Jean Yee Hwa Yang&lt;/a&gt;, at &lt;a href=&#34;https://sydney.edu.au/&#34;&gt;The University of Sydney&lt;/a&gt; in Australia, graduating in 2013 with Bachelor of Science (Advanced) and the University Medal in Statistics.&lt;/p&gt;
+
+&lt;p&gt;I am interested in a variety of problems in applied statistics primarily with applications in medicine, and am currently working on several projects related to data visualization, high dimensional (possibly, but probably not, &amp;ldquo;big&amp;rdquo;) data analysis and causal inference. My primary project is in collaboration with the Sarwal lab in the Department of Surgery at UCSF where we are evaluating large quantities of data with the goal of predicting acute rejection in HIV-positive kidney transplant patients.&lt;/p&gt;
+
+&lt;p&gt;I am the author of the &lt;a href=&#34;https://github.com/rlbarter/superheat&#34;&gt;superheat&lt;/a&gt; R package for creating beautiful and customizable heatmaps in R.&lt;/p&gt;
+
+&lt;p&gt;Having an underlying enthusiasm for demystifying the wonderful world of statistics, I tend to spend a lot of time communicating the philosophy and methodology of statistics to others via both teaching and writing. In particular, I am currently satisfying my craving for educating others by co-authoring a book on data science together with my advisor, Bin Yu.&lt;/p&gt;
+
+&lt;p&gt;I usually spend my free time out hiking, knitting, practicing yoga or making music.&lt;/p&gt;
+</description>
+    </item>
     
   </channel>
 </rss>
