@@ -9,6 +9,9 @@
 # Set the English locale for the `date` command.
 export LC_TIME=en_US.UTF-8
 
+# copy the index page
+cp public/blog/index.html layouts/index.html
+
 # GitHub username.
 USERNAME=rlbarter
 # Name of the branch containing the Hugo source files.
