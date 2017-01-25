@@ -1,4 +1,4 @@
-baseurl = "http://rlbarter.github.io/"
+baseurl = "http://hugo.spf13.com/"
 languageCode = "en-us"
 title = "Rebecca Barter"
 theme = "hugo-future-imperfect"
@@ -7,35 +7,9 @@ paginate = 3
 disqusShortname = ""
 googleAnalytics = ""
 
-
-[permalinks]
-    post = "/:year/:month/:day/:slug/"
-[[menu.main]]
-    name = "About"
-    url = "/about/"
-[[menu.main]]
-    name = "Blog"
-    url = "/blog/"
-[[menu.main]]
-    name = "CV"
-    url = "/cv/"
-[[menu.main]]
-    name = "Teaching"
-    url = "/teaching/"
-[[menu.main]]
-    name = "Projects"
-    url = "/projects/"
-[[menu.main]]
-    name = "GitHub"
-    url = "https://github.com/rlbarter"
-[[menu.main]]
-    name = "Twitter"
-    url = "https://twitter.com/rlbarter"
-
-
 [params]
     # Sets the meta tag description, usually reserved for the main page
-    description          = "Rebecca Barter's website. Data meets narrative. HTML5 UP theme, Future Imperfect. Powered by Hugo"
+    description          = "Rebecca Barter's webpage. HTML5 UP theme, Future Imperfect. Powered by Hugo"
     # This will appear on the top left of the navigation bar
     navbarTitle          = "Rebecca Barter"
     # Social media buttons that appear on the sidebar
@@ -69,7 +43,7 @@ googleAnalytics = ""
 [params.intro]
     header    = "Rebecca Barter"
 
-    paragraph = "Data meets narrative"
+    paragraph = "Data meets Narrative"
 
     about     = "Statistics PhD Student, Data Science Fellow and Avid Knitter."
 
@@ -83,9 +57,81 @@ googleAnalytics = ""
     circle    = false
     imperfect = true
     width     = ""
-    alt       = "Rebecca Barter"
+    alt       = "Hugo Future Imperfect"
 
 # Adjust the amount of recent posts on the sidebar.
 # This is optional. The default value 5 will be used
 [params.postAmount]
     sidebar = 2
+
+# Set up your menu items in the navigation bar
+# You can use identifier to prepend a font awesome icon to your text
+[[menu.main]]
+    name = "Blog"
+    url = "/blog"
+    identifier = "fa fa-newspaper-o"
+    weight = 1
+
+[[menu.main]]
+    name = "Categories"
+    url = "/categories"
+    weight = 2
+
+[[menu.main]]
+    name = "About"
+    url = "/about"
+    weight = 3
+
+[[menu.main]]
+    name = "CV"
+    url = "/cv"
+    weight = 3
+    
+[[menu.main]]
+    name = "Teaching"
+    url = "/teaching"
+    weight = 3
+    
+[[menu.main]]
+    name = "Projects"
+    url = "/projects"
+    weight = 3
+    
+[[menu.main]]
+    name = "GitHub"
+    url = "https://github.com/rlbarter"
+    weight = 4
+
+
+# Insert your username and the icon will apear on the page as long as
+# socialAppearAtTop or socialAppearAtBottom is set to true in the params area
+# The social media icons will appear on the sidebar
+[social]
+    github          = "rlbarter"
+    bitbucket       = ""
+    jsfiddle        = ""
+    codepen         = ""
+    foursquare      = ""
+    dribbble        = ""
+    deviantart      = ""
+    behance         = ""
+    flickr          = ""
+    instagram       = ""
+    youtube         = ""
+    vimeo           = ""
+    vine            = ""
+    medium          = ""
+    wordpress       = ""
+    tumblr          = ""
+    xing            = ""
+    linkedin        = ""
+    slideshare      = ""
+    stackoverflow   = ""
+    reddit          = ""
+    pinterest       = ""
+    googleplus      = ""
+    facebook        = ""
+    facebook_admin  = ""
+    twitter_domain  = ""
+    twitter         = "rlbarter"
+    email           = ""
