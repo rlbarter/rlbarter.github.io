@@ -6,8 +6,168 @@
     <description>Recent content in Blogs on Rebecca Barter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Dec 2016 21:49:57 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 02 Feb 2017 09:44:30 -0800</lastBuildDate>
     <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to Present Good</title>
+      <link>/blog/2017-02-02-how-to-present-good/</link>
+      <pubDate>Thu, 02 Feb 2017 09:44:30 -0800</pubDate>
+      
+      <guid>/blog/2017-02-02-how-to-present-good/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;p&gt;This week I was asked to give a presentation on giving presentations.&lt;/p&gt;
+&lt;p&gt;So meta.&lt;/p&gt;
+&lt;p&gt;Anyway, my lack of desire to spend time writing something that may have already been written by someone else led me to find a number of existing slides written by others with the same goal: to present on presenting. The only problem was that although these slides all contained excellent tips on making and subsequently presenting talks, the slides themselves were perfect examples of what &lt;em&gt;not&lt;/em&gt; to do when making slides; they were insurmountable walls of text.&lt;/p&gt;
+&lt;p&gt;I decided that I would have to make my own slides after all. The final product can be found &lt;a href=&#34;../slides/presenting.pdf&#34;&gt;here&lt;/a&gt; and is embedded below:&lt;/p&gt;
+&lt;iframe src=&#34;https://docs.google.com/presentation/d/1cbwpLcEhHxz-FcMh99dlboBrXUDAIrzRJE7mu9uFmGU/embed?start=false&amp;amp;loop=false&amp;amp;delayms=5000&#34; frameborder=&#34;0&#34; width=&#34;960&#34; height=&#34;569&#34; allowfullscreen=&#34;true&#34; mozallowfullscreen=&#34;true&#34; webkitallowfullscreen=&#34;true&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Read on for a more in-depth glimpse into my presentation pro-tips&lt;/p&gt;
+&lt;div id=&#34;dedicate-a-lot-of-time&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Dedicate a lot of time&lt;/h2&gt;
+&lt;p&gt;Making good slides takes time. You not only have to think about what you want to say, but also &lt;em&gt;how&lt;/em&gt; to say it, as well as how to arrange your slide so that it is not overwhelming yet still gets your point across.&lt;/p&gt;
+&lt;p&gt;Even making these fairly simple slides on presenting took me an hour and a half!&lt;/p&gt;
+&lt;p&gt;There is a quote by someone or other that says&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For every minute you speak an hour should be spent in preparation. So for a 60 minute seminar, one should work for 60 hours.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While this is clearly excessive, the point is clear: making a good presentation will take time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;consider-your-audience&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Consider your audience&lt;/h2&gt;
+&lt;p&gt;Giving the same presentation to vastly different groups of people is a definite no-no. For example, when I’m presenting to my biological collaborators, I need to simplify the technical details and can focus less on the biology background than when I’m presenting to my more data-literate peers. On the other hand, if I’m presenting to a lay-audience who is unfamiliar with both the technical details of the methods I’m using as well as the biology, I will remove all mathematical notation and stick to explanatory pictures that describe what I’m doing.&lt;/p&gt;
+&lt;p&gt;On that note, statisticians tend to fill their slides with far too much math even for a technical audience. Even the most accomplished statisticians cannot absorb all that notation at once! Whenever possible, try to use annotated graphics in place of equations.&lt;/p&gt;
+&lt;p&gt;One tip to try to tailor your talk to your audience is to ask the following questions:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How much background does my audience have?&lt;/strong&gt; If they have a strong math background, I can assume that they know the basics and don’t need to explain them in excruciating detail, but if they don’t know any biology, I need to give a very simple explanation in lay-terms of the how the process works.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What is it that I want my audience to take away from my presentation?&lt;/strong&gt; If I want them to be able to walk away and implement my method, I will give many more details, but if, as is more likely the case, I simply want them to have a broad understanding of why my project is important and how I’ve solved the problem at hand, then I can keep most of the details to myself and present a very high-level picture.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tell-a-story&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Tell a story&lt;/h2&gt;
+&lt;p&gt;Everyone enjoys a good story (but few people truly enjoy listening to a long, dry proof). Your talk should follow a structure as follows:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The setup&lt;/strong&gt;: what is the context?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The issue&lt;/strong&gt;: what was the problem that prompted your project?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The resolution&lt;/strong&gt;: what steps did you take to solve the problem? What’s are the next steps?&lt;/p&gt;
+&lt;p&gt;For example, I am currently working on a project involving kidney transplants in HIV patients. My story is as follows:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The setup&lt;/strong&gt;: due to prolonged survival of HIV patients, additional complications including HIV-associated nephrology (kidney disease) are becomming more common resulting in an increased demand for kidney transplants among this population.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The issue&lt;/strong&gt;: HIV-positive kidney transplant patients suffer from acute rejection of their transplanted kidney at a significantly higher rate than their HIV-negative counterparts.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The resolution&lt;/strong&gt;: we are developing models for predicting acute rejection in the hopes of elucidating the cause of this increased rejection rate.&lt;/p&gt;
+&lt;div id=&#34;transition-slides&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Transition slides&lt;/h3&gt;
+&lt;p&gt;Transition slides are a great way to separate one part of your story from another. Their presence serves to indicate to the audience that you’re moving onto something new. They are particularly effective if your main content slides and your transition slides have different color templates. For example in the presentation above, the content slides have a white background and black text (with a blue heading), but the transition slides have a blue background with white text.&lt;/p&gt;
+&lt;p&gt;The stark difference between content and transition is an incredibly effective way to teach the audience that a blue slide with white text means that we’re moving onto something new.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outlines&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Outlines&lt;/h2&gt;
+&lt;p&gt;People really like outlines (that slide at the beginning of your talk that describes its contents). I happen to think outlines are great, it’s just that most people are terrible at making them.&lt;/p&gt;
+&lt;p&gt;An example of a terrible outline is as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Motivation&lt;/li&gt;
+&lt;li&gt;Literature review&lt;/li&gt;
+&lt;li&gt;Contributions&lt;/li&gt;
+&lt;li&gt;Results&lt;/li&gt;
+&lt;li&gt;Conclusion&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Well that’s fairly useless. Of course your talk is going to begin with motivation, followed by a review of the literature, at which point you will move onto your contributions, show me some results and then conclude. This is the basic structure of every academic talk, ever.&lt;/p&gt;
+&lt;p&gt;A much better outline slide tells the audience what &lt;em&gt;you&lt;/em&gt; are going to talk about, not the skeletal structure of a general presentation.&lt;/p&gt;
+&lt;p&gt;For example, an outline for my kidney transplant project might look more like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Why HIV causes kidney disease&lt;/li&gt;
+&lt;li&gt;Outline of the UCSF Study&lt;/li&gt;
+&lt;li&gt;Cohort selection (and why we struggled with it)&lt;/li&gt;
+&lt;li&gt;Dynamic approaches to predicting rejection&lt;/li&gt;
+&lt;li&gt;And why they don’t work well (yet…)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;slide-contents&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Slide contents&lt;/h2&gt;
+&lt;div id=&#34;no-walls-of-text-please&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;No walls of text please!&lt;/h3&gt;
+&lt;p&gt;The golden rule of making presentations should be &lt;strong&gt;with text, less is always more&lt;/strong&gt;. There is a nice &lt;a href=&#34;http://blog.ted.com/10-tips-for-better-slide-decks/&#34;&gt;TED blog&lt;/a&gt; that has a nice paragraph discussing this point that I’m going to shamelessly drop here:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;One thing to avoid—slides with a lot of text, especially if it’s a repeat of what you’re saying out loud. It’s like if you give a paper handout in a meeting—everyone’s head goes down and they read, rather than staying heads-up and listening. If there are a lot of words on your slide, you’re asking your audience to split their attention between what they’re reading and what they’re hearing. That’s really hard for a brain to do, and it compromises the effectiveness of both your slide text and your spoken words. If you can’t avoid having text-y slides, try to progressively reveal text (like unveiling bullet points one by one) as you need it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I particularly like the point about how having a lot of text on your slides forces your audience to split their attention between reading and listening without achieving either goal successfully, because it’s &lt;em&gt;so true!&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;It’s important to realize that this holds true even if all of your text lives in bullet point format.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;font-size&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Font size&lt;/h3&gt;
+&lt;p&gt;One of the worst (but incredibly common) mistakes that people make when preparing slides is tiny font size. Anything smaller than 18pt is way too small! This is equally (possible, even more) true for figures. Pro-tip: make the axis labels, legend and annotations &lt;span style=&#34;font-size:larger;&#34;&gt;&lt;strong&gt;obnoxiously large&lt;/strong&gt;&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;images&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Images&lt;/h3&gt;
+&lt;p&gt;Images are a great way to lighten up your presentation. Try to find simple photos relevant to the point being made on the slide.&lt;/p&gt;
+&lt;p&gt;For example, I recently made a presentation that included a section on “Weak learners”, which are basically a number of classification models that each individually perform poorly (at least a little better than random guessing), but when pooled together made a powerful learning algorithm.&lt;/p&gt;
+&lt;p&gt;I included an image alongside my description displaying an army of soldiers. Get it?&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;http://static4.businessinsider.com/image/53a05de869bedd95242e6b76-1200-667/meereen-army-game-of-thrones.jpg&#34; alt=&#34;army&#34; style=&#34;width:400px;height:350px;&#34;&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-to-write-the-presentation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;How to write the presentation&lt;/h2&gt;
+&lt;p&gt;While I usually encourage people to start their slide preparation with a structural skeleton by&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Start with your transition slides that indicate the distinct sections of your talk,&lt;/li&gt;
+&lt;li&gt;Then add blank content slides with headers,&lt;/li&gt;
+&lt;li&gt;Finally fill in the content slides with content.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In practice, this isn’t quite what I do. While I will often start this way, as I start filling in the content, I will subsequently do a lot of moving things around, merging sections, and adding new ones.&lt;/p&gt;
+&lt;div id=&#34;repetition-for-emphasis&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Repetition for emphasis&lt;/h3&gt;
+&lt;p&gt;If there is something that is really crucial to your story say it many, many times. Often in &lt;strong&gt;bold font&lt;/strong&gt; and in a &lt;font color=&#34;red&#34;&gt;different color&lt;/font&gt;. Say it in different ways, and keep coming back to it verbally: “remember that here we &lt;em&gt;don’t&lt;/em&gt; have a control group, well blah blah blah”. Sometimes it’s okay to even tell your audience that you’re emphasizing something by saying something like “just in case it’s not obvious, I’m really trying to emphasize this point”.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;presenting-your-results&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Presenting your results&lt;/h2&gt;
+&lt;p&gt;Consider a slide containing the figure below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/blog/2017-02-02-how-to-present-good_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;How does this figure make you feel? Does it make you feel happy because of the pretty colors? Perhaps you’re just happy to see that the author used ggplot rather than base R plot…&lt;/p&gt;
+&lt;p&gt;To be honest, I think this plot is a mess; the colors are distracting, the axis labels are useless, the text is way too small and the heading “Results” is entirely uninformative.&lt;/p&gt;
+&lt;p&gt;Fortunately, there are many ways that we can make it better: we can&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;universally increase the font size,&lt;/li&gt;
+&lt;li&gt;highlight our method in bold and blue, while fading the competing methods into the background by shading them in grey,&lt;/li&gt;
+&lt;li&gt;give the figure informative axis names,&lt;/li&gt;
+&lt;li&gt;make an informative slide header with the take-away message that “our method has lower prediction error than the competitors”.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/blog/2017-02-02-how-to-present-good_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;768&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;For more tips like this, I encourage you to check out Cole Nussbaumer Knaflic’s book, &lt;a href=&#34;http://www.storytellingwithdata.com/book/&#34;&gt;&lt;em&gt;Storytelling with Data&lt;/em&gt;&lt;/a&gt;, which I really enjoyed. It is a great read if you want to learn how to present your figures to maximize impact and to use your data to tell a story.&lt;/p&gt;
+&lt;p&gt;Another important step to presenting results is to treat the audience like idiots. Trust me, they’ll appreciate it (mostly becauase they won’t realize that you’re doing it). Explain in excruciating detail what every single element of your figure means. For example, in presenting the plot above, rather than simply saying &lt;em&gt;“this plot shows that our method clearly outperforms our competitors”&lt;/em&gt;, I would say:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“In the figure on this slide, we are plotting the prediction &lt;em&gt;error&lt;/em&gt; rate over time. That means that the lower the error, the better. The x-axis depicts time, while the y-axis depicts the error rate at that time for each method reporesented by the three lines. Our method is highlighted in blue and we see that the error rate hovers around 10%, but that this is better than our competitors whose error rates tend to lie between 12 and 16% or so.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Just because your figure is obvious to you after having put a lot of thought into making the figure in the first place, that doesn’t mean that it is obvious to your audience who have viewed the figure for a total of 2 seconds.&lt;/p&gt;
+&lt;div id=&#34;presenting-many-plots-on-the-same-slide&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Presenting many plots on the same slide&lt;/h3&gt;
+&lt;p&gt;I have seen far to many presentations where the presenter moves to the next slide and, &lt;em&gt;BAM!&lt;/em&gt; - 10 plots that look almost identical are shoved in my face all at the same time. My brain subsequently has a meltdown and stops listening to a word the presenter is saying while I try to figure out what this army of plots is showing me.&lt;/p&gt;
+&lt;p&gt;Here is a simple example that I found on the interwebs:&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;https://hlplab.files.wordpress.com/2014/01/balancedexx1prime-effect-byexperiment.png&#34; alt=&#34;army&#34; style=&#34;width:400px;height:350px;&#34;&gt;
+&lt;/center&gt;
+&lt;p&gt;If you have to show a plot with many, many panels (perhaps from simulations under different paramter settings), then a much more effective way to present these results is to reveal them one-by-one, and explain what each plot shows as it is revealed, and how it compares to the previous plots.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;practice-makes-perfect&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Practice makes perfect&lt;/h2&gt;
+&lt;p&gt;After the slides are made it’s time to practice, practice, practice! Practice by yourself to ensure that your timing is correct and to reduce the number of &lt;em&gt;“um”&lt;/em&gt;s and &lt;em&gt;“er”&lt;/em&gt;s as you present. Then practice in front of other people, preferably in front of an actual screen so that you can figure out where to stand (or sit), what to do with your hands (they always seem to be in the way), and how to point at things (with a laser pointer? using your mouse? with a big stick?).&lt;/p&gt;
+&lt;p&gt;It is always a good idea to practice speaking slowly and clearly and to pause at each slide transition. Enthusiasm is encouraged - no one wants to listen to someone talk for an hour when &lt;em&gt;they&lt;/em&gt; dont even sound excited about what they’re presenting. Varying the tone of your voice is very helpful with exuding an aura of enthusiasm.&lt;/p&gt;
+&lt;p&gt;Eye contact is also vital. Why should your audience pay attention to you if you aren’t paying attention to them? If you are nervous, one idea is to pick a few spots in the back of the room, above people’s heads and look at those.&lt;/p&gt;
+&lt;p&gt;Lastly, my greatest tip of all is to use humour, but only if you feel comfortable doing so (I actually find that using humour helps me relax). But it’s never a good idea to force it.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
     
     <item>
       <title>Gender Issues Roundtable Discussion: A Case Study in Uncomfortable Conversations</title>
@@ -104,10 +264,10 @@
     
     <item>
       <title>The only reason one should ever use a pie chart</title>
-      <link>/blog/2015-07-23-r-rmarkdown/</link>
+      <link>/blog/2015-07-23-pie/</link>
       <pubDate>Sat, 10 Dec 2016 21:49:57 -0700</pubDate>
       
-      <guid>/blog/2015-07-23-r-rmarkdown/</guid>
+      <guid>/blog/2015-07-23-pie/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -123,7 +283,7 @@ pie(
   init.angle = -50, border = NA
 )&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;#####../content/blog/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;Pyramid pie chart art.&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;#####../content/blog/2015-07-23-pie_files/figure-html/pie-1.png&#34; alt=&#34;Pyramid pie chart art.&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Pyramid pie chart art.
 &lt;/p&gt;
