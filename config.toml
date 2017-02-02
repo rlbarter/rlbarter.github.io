@@ -102,6 +102,11 @@ googleAnalytics = "UA-90929425-1"
     url = "https://github.com/rlbarter"
     weight = 4
 
+[[menu.main]]
+    name = "Contact"
+    url = "/contact"
+    weight = 5
+
 
 # Insert your username and the icon will apear on the page as long as
 # socialAppearAtTop or socialAppearAtBottom is set to true in the params area

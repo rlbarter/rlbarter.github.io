@@ -18,6 +18,39 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Superheat
 
+I made a super cool R package ([github](https://github.com/rlbarter/superheat), [vignette](https://rlbarter.github.io/superheat/), [paper](https://arxiv.org/abs/1512.01524)) for creating customizable, extendable, and beautiful heatmaps.
+
+
+The motivation of the superheat package was to allow the user to visualize a design matrix, $X$, while simultaneously examining a response variable, $y$. Ideally, this would allow the viewer to explore how the independent variables and response are related to one another. However, we quickly realized that the applications are far more general than simply visualizing a supervised heatmap (hence the name, "superheat"), and we extended the usage to allow for a huge range of extensions to the heatmap.
+
+It is extremely easy to produce plots like the example below describing 10 randomly selected rows from the famous `mtcars` dataset. If you're interested in producing this specific plot, see my blog post displaying the code.
+
+```{r, echo = FALSE, fig.align='center', fig.height = 7, fig.width = 9}
+library(superheat)
+set.seed(1347983)
+superheat(mtcars[sample(1:nrow(mtcars), 10),], 
+          X.text = round(as.matrix(mtcars[sample(1:nrow(mtcars), 10),])),
+          scale = T, 
+          left.label.size = 0.5,
+          bottom.label.size = 0.15,
+          row.dendrogram = T,
+          yt = sapply(mtcars, function(x) cor(x, mtcars$hp)),
+          yt.plot.type = "bar",
+          yt.axis.name = "correlation\nwith\nhorsepower",
+          order.cols = order(sapply(mtcars, function(x) cor(x, mtcars$hp))),
+          bottom.label.text.angle = 90,
+          bottom.label.text.alignment = "right",
+          bottom.label.col = "white",
+          grid.vline.col = "white",
+          grid.hline.col = "white")
+
+```
+
+Here is a video of me presenting superheat at the UseR! Conference 2016 at Stanford University.
+
+<iframe src="https://channel9.msdn.com/Events/useR-international-R-User-conference/useR2016/Superheat-Supervised-heatmaps-for-visualizing-complex-data/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+
+
 
 ### Practical statistics
 
