@@ -2,7 +2,117 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://rlbarter.github.io/</loc>
+    <loc>/blog/2017-02-02-how-to-present-good/</loc>
+    <lastmod>2017-02-02T09:44:30-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2017-02-02-superheat-example/</loc>
+    <lastmod>2017-02-02T09:44:30-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/</loc>
+    <lastmod>2017-01-15T21:49:57-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2016-12-15-gender-bias/</loc>
+    <lastmod>2016-12-15T21:49:57-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2015-07-23-pie/</loc>
+    <lastmod>2016-12-10T21:49:57-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2016-05-05T21:48:51-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/contact/</loc>
+    <lastmod>2016-05-05T21:48:51-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/cv/</loc>
+    <lastmod>2016-05-05T21:48:51-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/teaching/</loc>
+    <lastmod>2016-05-05T21:48:51-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/</loc>
+    <lastmod>2017-02-02T09:44:30-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2017-02-02T09:44:30-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/communication/</loc>
+    <lastmod>2017-02-02T09:44:30-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/discussion/</loc>
+    <lastmod>2016-12-15T21:49:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/gender-bias/</loc>
+    <lastmod>2016-12-15T21:49:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/misc/</loc>
+    <lastmod>2016-12-15T21:49:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/pie-charts/</loc>
+    <lastmod>2016-12-10T21:49:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2017-02-02T09:44:30-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/r-markdown/</loc>
+    <lastmod>2016-12-10T21:49:57-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/superheat/</loc>
+    <lastmod>2017-02-02T09:44:30-08:00</lastmod>
     <priority>0</priority>
   </url>
   
