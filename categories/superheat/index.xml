@@ -9,6 +9,64 @@
     <atom:link href="/categories/superheat/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>superheat 0.1.0</title>
+      <link>/blog/2017-02-05-superheat-cran/</link>
+      <pubDate>Sun, 05 Feb 2017 09:44:30 -0800</pubDate>
+      
+      <guid>/blog/2017-02-05-superheat-cran/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;p&gt;superheat 0.1.0 is now available on CRAN. Superheat makes it easy to create extendable, cutomizable, and most importantly, beautiful heatmaps. It has increased flexibility and user-friendliness when compared to alternatives such as &lt;code&gt;heatmap()&lt;/code&gt; and &lt;code&gt;pheatmap()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For usage options see the &lt;a href=&#34;https://rlbarter.github.io/superheat/&#34;&gt;&lt;strong&gt;vignette&lt;/strong&gt;&lt;/a&gt; and for examples see the accompanying &lt;a href=&#34;https://arxiv.org/abs/1512.01524&#34;&gt;&lt;strong&gt;paper by Barter and Yu (2017)&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can install the latest version with:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;superheat&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Stay tuned for new versions with added features and minor usability tweaks.&lt;/p&gt;
+&lt;div id=&#34;example-usage&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Example usage&lt;/h2&gt;
+&lt;p&gt;Usage is straightforward and intuitive:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(superheat)
+set.seed(1347983)
+selected.rows &amp;lt;- sample(1:nrow(mtcars), 10)
+# add a space after the column names for aesthetic purposes
+colnames(mtcars) &amp;lt;- paste0(colnames(mtcars), &amp;quot; &amp;quot;)
+
+# plot the superheatmap
+superheat(mtcars[selected.rows,], 
+          # scale columns
+          scale = T, 
+          # label aesthetics
+          left.label.size = 0.5,
+          bottom.label.size = 0.15,
+          bottom.label.text.angle = 90,
+          bottom.label.text.alignment = &amp;quot;right&amp;quot;,
+          bottom.label.col = &amp;quot;white&amp;quot;,
+          # dendrogram
+          row.dendrogram = T,
+          # top plot
+          yt = sapply(mtcars, function(x) cor(x, mtcars$hp)),
+          yt.plot.type = &amp;quot;bar&amp;quot;,
+          yt.axis.name = &amp;quot;correlation\nwith\nhorsepower&amp;quot;,
+          # column order
+          order.cols = order(sapply(mtcars, function(x) cor(x, mtcars$hp))),
+          # grid lines
+          grid.vline.col = &amp;quot;white&amp;quot;,
+          grid.hline.col = &amp;quot;white&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/blog/2017-02-05-superheat-cran_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;864&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Superheat: a simple example</title>
       <link>/blog/2017-02-02-superheat-example/</link>
       <pubDate>Thu, 02 Feb 2017 09:44:30 -0800</pubDate>
