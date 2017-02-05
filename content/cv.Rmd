@@ -38,7 +38,7 @@ Sydney, Australia*, Graduated November 2013
 
 ## Papers
 
-**Barter RL**, Yu B (2015). Superheat: Supervised heatmaps for visualizing
+**Barter RL**, Yu B (2017). Superheat: Supervised heatmaps for visualizing
 complex data, *(preprint) arXiv*  [http://arxiv.org/abs/1512.01524 ](http://arxiv.org/abs/1512.01524)
 
 
