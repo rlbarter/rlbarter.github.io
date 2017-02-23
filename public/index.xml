@@ -2,11 +2,977 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rebecca Barter</title>
-    <link>https://rlbarter.github.io/index.xml</link>
+    <link>/index.xml</link>
     <description>Recent content on Rebecca Barter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://rlbarter.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Feb 2017 21:13:14 -0500</lastBuildDate>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ANOVA</title>
+      <link>/blog/2017-02-17-anova/</link>
+      <pubDate>Mon, 20 Feb 2017 21:13:14 -0500</pubDate>
+      
+      <guid>/blog/2017-02-17-anova/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;p&gt;Last week, &lt;a href=&#34;https://rlbarter.github.io/Practical-Statistics/&#34;&gt;practical statistics&lt;/a&gt; met to discuss all things ANOVA. Below you will find the slides from my talk, but read on if you would like to learn all about ANOVA.&lt;/p&gt;
+&lt;center&gt;
+&lt;iframe src=&#34;https://docs.google.com/presentation/d/1mjaZs2ynGK7-qHFFr0nzjHmwqT3BhLDf0h-R5h6RsfU/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&#34; frameborder=&#34;0&#34; width=&#34;720&#34; height=&#34;449&#34; allowfullscreen=&#34;true&#34; mozallowfullscreen=&#34;true&#34; webkitallowfullscreen=&#34;true&#34;&gt;
+&lt;/iframe&gt;
+&lt;/center&gt;
+&lt;div id=&#34;when-anova-is-used-and-who-uses-it&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;When ANOVA is used and who uses it?&lt;/h2&gt;
+&lt;p&gt;ANOVA is used far and wide by the scientific community and beyond. Unfortunately, scientists also frequently misuse ANOVA. A study by &lt;a href=&#34;https://www.hindawi.com/journals/tswj/2011/139494/&#34;&gt;Wu et al. (2011)&lt;/a&gt; showed that from a survey of 10 leading Chinese medical journals in 2008, 446 articles used ANOVA, and of those articles, &lt;a href=&#34;https://www.hindawi.com/journals/tswj/2011/139494/tab1/&#34;&gt;&lt;strong&gt;59% of them used ANOVA incorrectly&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this post, I will describe the general framework for ANOVA, the assumptions it requires, and many common pitfalls. While I will introduce a few equations, I will not provide extensive details or derivations. Instead, I will focus on developing intuition for &lt;em&gt;why&lt;/em&gt; these equations make sense for the type of problem at hand.&lt;/p&gt;
+&lt;p&gt;Let’s start by getting an idea of what kind of questions one can answer using ANOVA. Three examples are presented below.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Is there a difference between the average number of times articles are shared on social media based on day of the week?&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Is there a difference in average waiting room times for a set of 3 different hospitals?&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Does the presence of other people have an influence on the amount of time taken for a person to help someone in distress?&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The third question is not like the others; can you see why? The first two questions are asking about a difference between mean values of some outcome (article shares or waiting room time) across multiple groups (day of week or hospital). The last question, however, does not seem to satisfy this criteria: while it has a clear outcome (amount of time taken for a person to help someone in distress), it has no obvious groupings.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.wadsworth.com/psychology_d/templates/student_resources/0155060678_rathus/ps/ps19.html&#34;&gt;Darley and Latané (1969)&lt;/a&gt; used ANOVA to answer the question of whether the presence of other people had an influence on the amount of time taken for a person to help someone in distress by setting up an appropriate experiment. In doing so, they were the first to demonstrate the “&lt;a href=&#34;https://en.wikipedia.org/wiki/Bystander_effect&#34;&gt;bystander effect&lt;/a&gt;”.&lt;/p&gt;
+&lt;p&gt;In their experiment, the experimenter had the subject wait in a room with either 0, 2, or 4 other individuals. The experimenter announces that the study will begin shortly and walks into an adjacent room. In a few moments the people in the waiting room hear her fall and cry out. The outcome variable is the number of seconds it takes the subject to help the experimenter, and the grouping variable is the number of other people in the room (0, 2, or 4).&lt;/p&gt;
+&lt;p&gt;Given these examples, the definition of ANOVA provided in the following paragraph shouldn’t come as much of a surprise.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;anova-in-a-nutshell&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;ANOVA in a nutshell&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;AN&lt;/strong&gt;alysis &lt;strong&gt;O&lt;/strong&gt;f &lt;strong&gt;VA&lt;/strong&gt;riance (&lt;strong&gt;ANOVA&lt;/strong&gt;), is a widely used method designed for &lt;em&gt;comparing differences in means among three or more groups.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;For example, we might be interested in comparing the average waiting times in the emergency rooms of three different hospitals. Or perhaps we have conducted a clinical trial comparing the effectiveness of five different drugs for reducing blood pressure.&lt;/p&gt;
+&lt;p&gt;The key is that each individual falls into a group described by a &lt;em&gt;(categorical) grouping variable&lt;/em&gt; (e.g. hospital or drug group) and for each individual we measure some &lt;em&gt;continuous outcome&lt;/em&gt; (e.g. waiting time or blood pressure).&lt;/p&gt;
+&lt;p&gt;Although there are multiple types of ANOVA, the simplest (“one-way” ANOVA) can be thought of as a generalization of a two-sample t-test. One-way ANOVA involves testing the &lt;em&gt;omnibus hypothesis&lt;/em&gt; that &lt;em&gt;k&lt;/em&gt; population means are identical:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[H_0: \mu_1 = \mu_2 = ... = \mu_k.\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Note that the two-sample t-test tested the hypothesis that &lt;em&gt;two&lt;/em&gt; population means are equal (i.e. &lt;em&gt;k = 2&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;The alternative hypothesis for ANOVA states that &lt;em&gt;any one&lt;/em&gt; of the population mean equalities does not hold:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[H_1: \mu_i \neq \mu_j~~ \text{ for some } ~~i \neq j.\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;It is important to note that a rejection of the null hypothesis &lt;strong&gt;does not tell you which of the population means differ&lt;/strong&gt;. It only tells you that there is &lt;em&gt;some&lt;/em&gt; population whose mean is different from at least one other population (it could be that all of the means are different from one another!)&lt;/p&gt;
+&lt;div id=&#34;a-simple-toy-example-hospital-waiting-times&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;A simple toy example: hospital waiting times&lt;/h3&gt;
+&lt;p&gt;Suppose that we have three hospitals, let’s call them A, B and C (creative names, I know). We are interested in whether all three hospitals have the same the average waiting time for the emergency room.&lt;/p&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-1&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;./img/anova/hospitals.png&#34; alt=&#34;Three hospitals: A, B and C.&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: Three hospitals: A, B and C.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;We measured the waiting time for 20 unique individuals at each of these three hospitals (so there are 60 individuals in total). These waiting times (in hours) are recorded below.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;right&#34;&gt;Hospital A&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Hospital B&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Hospital C&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1.8&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.9&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1.4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.8&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;2.1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.9&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;2.2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1.2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1.3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1.1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1.1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.9&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1.4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.8&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1.1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.9&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1.1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1.6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.9&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;As pictures tend to be more informative than tables, we present a plot of these waiting times below. To aid the visualization, the x-position of each point is jittered to gently increase the space between the points.&lt;/p&gt;
+&lt;p&gt;Most people seem to wait over an hour, with some unlucky individuals waiting for almost 3 hours. The mean waiting time for each hospital is highlighted by a red bar.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/blog/2017-02-17-anova_files/figure-html/wait2-1.png&#34; width=&#34;288&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The question of interest is whether or not the average waiting time for each of the three hospitals is the same. This question might be naively interpreted as: “are the red bars at the same height?”, i.e. is there a difference between the waiting times for the &lt;em&gt;sample&lt;/em&gt; of 20 patients from each hospital. The intended question is actually asking about equality between the average waiting times from the population of all patients who have ever, and will ever, wait in these waiting rooms, regardless of whether they fall in our sample.&lt;/p&gt;
+&lt;p&gt;Although the sample means clearly aren’t identical (the red bars are all at different heights), &lt;strong&gt;do we have enough evidence to show that the &lt;em&gt;underlying population&lt;/em&gt; waiting time means are different&lt;/strong&gt;, or are the differences that we observe are simply reflection of the inherent noise in the data?&lt;/p&gt;
+&lt;p&gt;This is the question that lies at the heart of hypothesis testing.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-is-anova-called-analysis-of-variance&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Why is ANOVA called “Analysis of Variance”?&lt;/h3&gt;
+&lt;p&gt;What does comparing means have to do with variability?&lt;/p&gt;
+&lt;p&gt;Quite a lot it turns out… simply by asking “are the means different”, we are essentially asking a question about whether the variance of the means is large. However, the variability that we observe between the means themselves only makes sense relative to the overall variance in the data. For example, if the individual observations themselves are extremely variable, then it might be reasonable to expect that the observed group-specific averages might exhibit some variance (even if the underlying true averages are identical).&lt;/p&gt;
+&lt;p&gt;There are two types of variance at play here:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;within-group variability&lt;/strong&gt;: the variance of the individual observations within a group, and&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;between-group variability&lt;/strong&gt;: the variance between the averages of the groups.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the figure below, the red bars in the left panel highlight the &lt;em&gt;within-group variance&lt;/em&gt;, while the red bars in the right panel highlight the &lt;em&gt;between-group variance&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/blog/2017-02-17-anova_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;768&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The basic idea is that &lt;strong&gt;if the variability between the groups is greater than the variability within the groups&lt;/strong&gt;, then we have evidence that the differences between the groups is not simply reflecting random noise.&lt;/p&gt;
+&lt;p&gt;Quantifying the within and between group variability is typically done by calculating a mean sum of squares: add up the squared vertical distances and divide by the &lt;em&gt;degrees of freedom&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;This means that we are comparing the&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;between sum of squares (BSS): the squared distances from the group means (average over all individuals separately &lt;em&gt;for each hospital&lt;/em&gt;) to the global mean (average over all individuals),&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;to the&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;within sum of squares (WSS): the squared distances from each individual to their group mean (average over all individuals within the same hospital).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Using this idea we can formulate a test statistic:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/anova/F-stat.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;To spell it out mathematically, we can write these expressions as follows:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[WSS =\sum_{i = 1}^K \sum_{j = 1}^{n_i} (y_{ij} - \overline{y}_{i\cdot})^2 ~~~~~ \text{ and } ~~~~~ BSS = \sum_{i=1}^K (\overline{y}_{\cdot \cdot} - \overline{y}_{i\cdot})^2\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(y_{ij}\)&lt;/span&gt;, defines the waiting room time (outcome) for patient &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; from hospital &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\overline{y}_{\cdot \cdot}\)&lt;/span&gt; defines the global average waiting time and &lt;span class=&#34;math inline&#34;&gt;\(\overline{y}_{i \cdot}\)&lt;/span&gt; defines the average waiting time for hospital &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; is the number of hospitals, and &lt;span class=&#34;math inline&#34;&gt;\(n_i\)&lt;/span&gt; is the number of patients sampled from hospital &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Note that in the test statistic above, each quantity is scaled by its &lt;strong&gt;degrees of freedom&lt;/strong&gt;, which when comparing the groups is the number of groups minus 1 (&lt;span class=&#34;math inline&#34;&gt;\(K-1\)&lt;/span&gt;), and when comparing individuals is the number of individuals minus the number of groups (&lt;span class=&#34;math inline&#34;&gt;\(N-K\)&lt;/span&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-assumptions-are-required&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What assumptions are required?&lt;/h2&gt;
+&lt;p&gt;If our data satisfies a few parametric assumptions, then we can show that this test statistic follows an &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt; distribution and we can do a straightforward parametric hypothesis test:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\text{p-value} = P\left(F_{K-1, N-k} \geq \frac{BSS/(K-1)}{WSS/(N-K)}\right).\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;These assumptions are as follows&lt;/p&gt;
+&lt;div id=&#34;assumption-1-the-samples-are-independent.&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Assumption 1: The samples are &lt;strong&gt;independent&lt;/strong&gt;.&lt;/h3&gt;
+&lt;p&gt;Independence is an extremely common assumption that is hard to test in general.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;assumption-2-the-data-are-normally-distributed.&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Assumption 2: The data are &lt;strong&gt;normally distributed&lt;/strong&gt;.&lt;/h3&gt;
+&lt;p&gt;Not being a fan of such distributional assumptions myself, I am inclined to point the reader in the direction of non-parametric versions of ANOVA, including the &lt;a href=&#34;https://en.wikipedia.org/wiki/Kruskal%E2%80%93Wallis_one-way_analysis_of_variance&#34;&gt;Kruskal-Wallis test&lt;/a&gt;, however since this is a blog post about ANOVA, we will leave non-parametric readings to the interested parties. Those wishing to test the normality of their data can do so using a variety of methods such as plotting a QQ-plot, or using a normality test (see the &lt;a href=&#34;https://en.wikipedia.org/wiki/Normality_test&#34;&gt;Wikipedia page on normality tests&lt;/a&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;assumption-3-each-group-has-the-same-variance.&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Assumption 3: Each group has the &lt;strong&gt;same variance&lt;/strong&gt;.&lt;/h3&gt;
+&lt;p&gt;The common variance assumption can be tested using common tests, such as the &lt;a href=&#34;https://en.wikipedia.org/wiki/Bartlett%27s_test&#34;&gt;Bartlett test&lt;/a&gt; and the &lt;a href=&#34;http://www.statsref.com/HTML/index.html?fligner-killeen_test.html&#34;&gt;Fligner-Killeen test&lt;/a&gt;, which are easily implemented in R.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;working-through-our-waiting-times-example&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Working through our waiting times example&lt;/h2&gt;
+&lt;p&gt;Let’s examine these assumptions for our Hospital waiting times example.&lt;/p&gt;
+&lt;p&gt;Unfortunately, independence is hard to judge statistically, but if, for example, each person was randomly selected from a splattering of visitors to the waiting room at different times (rather than, e.g. selecting 5 members of the same family all of whom came to the hospital together in some freak accident), then the assumption of independence is probably ok.&lt;/p&gt;
+&lt;p&gt;The figure below plots the density estimation for the waiting times from each hospital. We know that if our data is normally distributed, it should look vaguely like a bell-curve.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/blog/2017-02-17-anova_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;960&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;One might argue that these are some pretty funky-looking bell-curves…&lt;/p&gt;
+&lt;p&gt;However, as I was the one who simulated this data in the first place, I can assure you that they are in fact normally distributed, and you can use this as a lesson on the difficult of drawing conclusions on normality from small samples (in this case, we have 20 observations in each group).&lt;/p&gt;
+&lt;p&gt;A &lt;a href=&#34;http://stat.ethz.ch/R-manual/R-devel/library/stats/html/shapiro.test.html&#34;&gt;Shapiro-Wilk test for normality&lt;/a&gt; provides p-values of 0.39, 0.087, 0.52 for hospitals A, B and C, respectively. Although none of these values are “significant” (even unadjusted for multiple testing), we have stumbled upon another lesson: small p-values (&lt;span class=&#34;math inline&#34;&gt;\(p = 0.087\)&lt;/span&gt; for hospital B) can certainly occur when the null hypothesis is true (in this case, the null hypothesis is that the data are normally distributed)! Remember that when the null hypothesis is true, p-values are uniformly distributed.&lt;/p&gt;
+&lt;p&gt;Finally, based on a visual assessment, the common variance assumption is probably fairly reasonable (and, again, since I simulated this data, I can confirm that the variance is the same for each hospital).&lt;/p&gt;
+&lt;p&gt;To test this formally, &lt;a href=&#34;https://en.wikipedia.org/wiki/Bartlett&amp;#39;s_test&#34;&gt;Bartlett’s test for homogeneity of variances&lt;/a&gt; yields a p-value of 0.68, indicating that we do not have evidence that the variances are different.&lt;/p&gt;
+&lt;p&gt;We have now concluded that the assumptions for ANOVA are satisfied, and can proceed to do our calculations.&lt;/p&gt;
+&lt;p&gt;Calculating the between-sum-of-squares (BSS) and scaling by the degrees of freedom (the number of groups minus 1), and the within-sum-of-squares (WSS) and scaling by the degrees of freedom (the number of observations minus the number of groups), we get that&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\frac{BSS}{K - 1} = \frac{5.94}{3 - 1} = 2.97 ~~~~~~ \text{and} ~~~~~ \frac{WSS}{N - K} = \frac{16.96}{60 - 3} = 0.30.\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Our test statistic turns out to be quite large indeed:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[F = \frac{BSS/(K-1)}{WSS/(N-k)} = \frac{2.97}{0.3} = 9.98.\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Since we are confident that the ANOVA assumptions are satisfied, this F-statistic must follow an F distribution with suitable degrees of freedom. Our p-value can thus be calculated as follows:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(F_{2, 53} \geq 9.98) = 0.000192\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;And we can claim to have evidence that the three group means are not all identical. Note that we can interpret this as the distances between the group means and the global mean is quite large relative to the distances between the individual observations and the group means. Recall that these distances are scaled by their respective degrees of freedom.&lt;/p&gt;
+&lt;p&gt;Rather than conducting these calculations by hand, in R, one could simply use the &lt;code&gt;aov()&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(aov(time ~ hospital, data = data))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             Df Sum Sq Mean Sq F value   Pr(&amp;gt;F)    
+## variable     2  5.938  2.9688   9.981 0.000192 ***
+## Residuals   57 16.955  0.2975                     
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;obtaining the same p-value.&lt;/p&gt;
+&lt;div id=&#34;anova-as-a-linear-model&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;ANOVA as a linear model&lt;/h3&gt;
+&lt;p&gt;So far we have discussed ANOVA purely as a hypothesis test comparing two different types of variability. It is, however, more common to talk about ANOVA as a &lt;strong&gt;linear model&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The anova linear model can be written as follows:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/anova/model.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; represents the overall average wait time across all hospitals, and &lt;span class=&#34;math inline&#34;&gt;\(\tau_i\)&lt;/span&gt; represents the amount of time that is either added or subtracted from the overall average as a result of being at hospital &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;. To get the average wait time for hospital &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; we can calculate &lt;span class=&#34;math inline&#34;&gt;\(\mu_i := \mu + \tau_i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Finally, &lt;span class=&#34;math inline&#34;&gt;\(\epsilon_{ij}\)&lt;/span&gt; represents the “noise” term; the quantity that defines how the waiting time for individual &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; differs from the mean (within their group).&lt;/p&gt;
+&lt;p&gt;We typically assume that the expected value (the average over the population) for &lt;span class=&#34;math inline&#34;&gt;\(\epsilon_{ij}\)&lt;/span&gt; is equal to zero, and that the &lt;span class=&#34;math inline&#34;&gt;\(\tau_i\)&lt;/span&gt;s add up to zero. Note that if we do not assume that &lt;span class=&#34;math inline&#34;&gt;\(\tau_i\)&lt;/span&gt;s sum to zero, then the model is “over-parametrized” in that there would be an infinite number of ways to define the &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\tau_i\)&lt;/span&gt;s such that they add up to the group mean &lt;span class=&#34;math inline&#34;&gt;\(\mu_i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The question that is sure to be on the edge of your tongue is &lt;strong&gt;“how is this possibly equivalent to the hypothesis test discussed above?”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The answer is simple and can be summarized by the diagram below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/anova/equivalence.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Specifically, if the hospital-specific effects &lt;span class=&#34;math inline&#34;&gt;\(\tau_A, \tau_B,\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\tau_C\)&lt;/span&gt; are all equal to zero, then the average effect across all groups is the same: &lt;span class=&#34;math inline&#34;&gt;\(\mu_A = \mu_B = \mu_C = \mu\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;common-pitfalls-of-anova-and-alternative-approaches&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Common pitfalls of ANOVA and alternative approaches&lt;/h2&gt;
+&lt;p&gt;Despite its perceived simplicity, scientists frequently misuse ANOVA. A study by &lt;a href=&#34;https://www.hindawi.com/journals/tswj/2011/139494/&#34;&gt;Wu et al. (2011)&lt;/a&gt; showed that from a survey of 10 leading Chinese medical journals in 2008, 446 articles used ANOVA, and of those articles, &lt;a href=&#34;https://www.hindawi.com/journals/tswj/2011/139494/tab1/&#34;&gt;&lt;strong&gt;59% of them used ANOVA incorrectly&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Below we will discuss many of the common pitfalls.&lt;/p&gt;
+&lt;div id=&#34;using-one-way-anova-when-there-is-more-than-one-grouping-variable&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Using one-way ANOVA when there is more than one grouping variable&lt;/h3&gt;
+&lt;p&gt;Suppose that instead of solely measuring waiting times from emergency waiting rooms at each hospital, we instead measured the waiting times from three medical departments from each hospital: &lt;em&gt;surgery&lt;/em&gt;, &lt;em&gt;pediatrics&lt;/em&gt;, and &lt;em&gt;dentistry&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/anova/two-way.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;In this scenario we should adapt the model to take the second grouping variable into account. This is called &lt;strong&gt;two-way ANOVA&lt;/strong&gt;, and the model can be adapted as follows:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[y_{ijk} = \mu + \tau_i + \gamma_j + \beta_{ij} + \epsilon_{ijk}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(\tau_i\)&lt;/span&gt; represents the hospital-specific effect on waiting time and &lt;span class=&#34;math inline&#34;&gt;\(\gamma_j\)&lt;/span&gt; represents the department-specific effect. &lt;span class=&#34;math inline&#34;&gt;\(\beta_{ij}\)&lt;/span&gt; represents an interaction term between these two effects.&lt;/p&gt;
+&lt;p&gt;Another adaptation of ANOVA when the second grouping variable (medical department) is not the same across each hospital is called &lt;strong&gt;nested ANOVA&lt;/strong&gt; (see fig below). For example, perhaps we are comparing both hospitals and medical departments, but we are not examining the same medical department in each hospital.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/anova/nested.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conducting-anova-multiple-times-for-multiple-outcomes&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Conducting ANOVA multiple times for multiple outcomes&lt;/h3&gt;
+&lt;p&gt;Suppose that instead of simply being interested in whether there is a difference between waiting time for each hospital, we were also interested in differences in average &lt;em&gt;length of hospital stay&lt;/em&gt; and &lt;em&gt;cost of visit&lt;/em&gt;. Then the incorrect way to proceed would be to generate three separate ANOVA models and draw our conclusions separately for each model. This reeks of multiple testing issues and does not take into account any dependence between the different outcome variables.&lt;/p&gt;
+&lt;p&gt;Instead, one should use Multivariate Analysis of Variance (&lt;strong&gt;MANOVA&lt;/strong&gt;), which can be written as follows:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ \left[\begin{array}a  y_{ij1} \\ y_{ij2} \\ y_{ij3} \end{array} \right]= \mu + \tau_i +  \epsilon_{ij}\]&lt;/span&gt; where&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(y_{ij1}\)&lt;/span&gt; is the waiting time for individual &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; from hospital &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;,&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(y_{ij2}\)&lt;/span&gt; is the length of hospital stay for individual &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; from hospital &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;, and&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(y_{ij3}\)&lt;/span&gt; is the cost of the visit for individual &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; from hospital &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;incorrectly-conducting-multiple-pair-wise-comparisons-following-anova&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Incorrectly conducting multiple pair-wise comparisons following ANOVA&lt;/h3&gt;
+&lt;p&gt;Upon obtaining a “significant” ANOVA p-value, a common mistake is to then go and test all of the pairwise differences to identify &lt;em&gt;which&lt;/em&gt; of the populations had different means. This is another example of multiple hypothesis testing, and corrections on these p-values must be made. See the &lt;a href=&#34;https://en.wikipedia.org/wiki/Multiple_comparisons_problem&#34;&gt;Wikipedia page&lt;/a&gt; for details on this common issue.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;using-anova-to-analyse-repeated-measures-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Using ANOVA to analyse repeated-measures data&lt;/h3&gt;
+&lt;p&gt;What if, instead of having measured the waiting room times on a different set of 20 people at each hospital (left-panel in fig below), we instead measured the waiting room times on the same set of 20 people at each hospital (right-panel in fig below)?&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/anova/repeated-normal-anova.png&#34; width=&#34;800&#34; height=&#34;200&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We have certainly violated the assumption that our observations are independent. Fortunately, &lt;strong&gt;repeated measures ANOVA (rANOVA)&lt;/strong&gt; is a method for exactly this situation.&lt;/p&gt;
+&lt;p&gt;Basically, rANOVA simply splits the within sum of squares into the individual-level sum of squares and the random error sum of squares. An excellent article describing rANOVA can be found &lt;a href=&#34;https://statistics.laerd.com/statistical-guides/repeated-measures-anova-statistical-guide.php&#34;&gt;here&lt;/a&gt;. A common repeated measures experimental design involves observations being made at different &lt;em&gt;time points&lt;/em&gt; (as opposed to at different hospitals).&lt;/p&gt;
+&lt;p&gt;According to the Wikipedia article,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;rANOVA is not always the best statistical analysis for repeated measure designs. The rANOVA is vulnerable to effects from missing values, imputation, unequivalent time points between subjects and violations of sphericity. These issues can result in sampling bias and inflated rates of Type I error. In such cases it may be better to consider use of a linear mixed model.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;freqently-asked-questions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Freqently asked questions&lt;/h2&gt;
+&lt;div id=&#34;can-i-use-anova-if-my-data-violates-the-assumption-of-common-variances&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Can I use ANOVA if my data violates the assumption of common variances?&lt;/h3&gt;
+&lt;p&gt;According to this post on &lt;a href=&#34;http://stats.stackexchange.com/questions/56971/alternative-to-one-way-anova-unequal-variance&#34;&gt;Stats Stack Exchange&lt;/a&gt;, if the sample size in each group is similar, and the difference between variance isn’t too bad, you should be ok.&lt;/p&gt;
+&lt;p&gt;According to user &lt;em&gt;gung&lt;/em&gt;, with similar group sizes there is a rule of thumb that states that&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ANOVA is robust to heterogeneity of variance so long as the largest variance is not more than 4 times the smallest variance.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I’ll admit that I haven’t checked this claim, but I’d be willing to believe it.&lt;/p&gt;
+&lt;p&gt;If, however, your data has wildly different group variances or varying group sizes, then I’m not entirely sure of what options exist (note that the non-parametric alternative also assumes that the population variances are similar).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;if-my-data-are-not-normal-can-i-simply-transform-it-and-draw-the-conclusions-as-normal&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;If my data are not normal, can I simply transform it and draw the conclusions as normal?&lt;/h3&gt;
+&lt;p&gt;Yes, probably.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-does-the-anova-for-model-comparison-work&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How does the ANOVA for model comparison work?&lt;/h3&gt;
+&lt;p&gt;It is common to use the &lt;code&gt;anova()&lt;/code&gt; function in R to compare two different models. Specifically, it compares &lt;em&gt;nested&lt;/em&gt; models wherein one model consists of a subset of the set of variables of the other model.&lt;/p&gt;
+&lt;p&gt;Note that the use of the word “nested” here has nothing to do with the nested anova discussed above in which the grouping variables themselves (rather than the models) were nested.&lt;/p&gt;
+&lt;p&gt;The comparison being made by ANOVA in this situation is whether the residual sum of squares (which is essentially the &lt;em&gt;within sum of squares&lt;/em&gt; from one-way ANOVA) for model 1 (the larger model) is larger than the residual sum of squares for model 2 (the smaller model).&lt;/p&gt;
+&lt;p&gt;Specifically, it calculates the F-statistic&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[F = \frac{(RSS_{\text{model 2}} - RSS_{\text{model 1}})/(p_1 - p_2)}{RSS_{\text{model 1}}/(n - p_1)}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The idea is that since model 2 is a special case of model 1, model 1 is more complex so &lt;span class=&#34;math inline&#34;&gt;\(RSS_{\text{model 2}}\)&lt;/span&gt; will always be as least as large as &lt;span class=&#34;math inline&#34;&gt;\(RSS_{\text{model 1}}\)&lt;/span&gt;. The question is whether the difference is “statistically significant”.&lt;/p&gt;
+&lt;p&gt;Note that if you call the &lt;code&gt;anova()&lt;/code&gt; function with a single model, it will compare the first variable in the model to a baseline model with no predictors. If there is a second variable, it compares the model with both variables against the model with just one variable, and so on and so forth.&lt;/p&gt;
+&lt;p&gt;See this &lt;a href=&#34;http://www.statpower.net/Content/311/Lecture%20Notes/RegressionIntro.pdf&#34;&gt;set of slides&lt;/a&gt; by James Steiger if you’re interested in further details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-end&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The end…&lt;/h2&gt;
+&lt;p&gt;While this post has only scratched the surface of all things ANOVA, I hope that you have developed a general intuition for how ANOVA works, what assumptions are needed to make things go, and common pitfalls to avoid.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>superheat 0.1.0</title>
+      <link>/blog/2017-02-05-superheat-cran/</link>
+      <pubDate>Sun, 05 Feb 2017 09:44:30 -0800</pubDate>
+      
+      <guid>/blog/2017-02-05-superheat-cran/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;p&gt;superheat 0.1.0 is now available on CRAN. Superheat makes it easy to create extendable, cutomizable, and most importantly, beautiful heatmaps. It has increased flexibility and user-friendliness when compared to alternatives such as &lt;code&gt;heatmap()&lt;/code&gt; and &lt;code&gt;pheatmap()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For usage options see the &lt;a href=&#34;https://rlbarter.github.io/superheat/&#34;&gt;&lt;strong&gt;vignette&lt;/strong&gt;&lt;/a&gt; and for examples see the accompanying &lt;a href=&#34;https://arxiv.org/abs/1512.01524&#34;&gt;&lt;strong&gt;paper by Barter and Yu (2017)&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can install the latest version with:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;superheat&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Stay tuned for new versions with added features and minor usability tweaks.&lt;/p&gt;
+&lt;div id=&#34;example-usage&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Example usage&lt;/h2&gt;
+&lt;p&gt;Usage is straightforward and intuitive:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(superheat)
+set.seed(1347983)
+selected.rows &amp;lt;- sample(1:nrow(mtcars), 10)
+# add a space after the column names for aesthetic purposes
+colnames(mtcars) &amp;lt;- paste0(colnames(mtcars), &amp;quot; &amp;quot;)
+
+# plot the superheatmap
+superheat(mtcars[selected.rows,], 
+          # scale columns
+          scale = T, 
+          # label aesthetics
+          left.label.size = 0.5,
+          bottom.label.size = 0.15,
+          bottom.label.text.angle = 90,
+          bottom.label.text.alignment = &amp;quot;right&amp;quot;,
+          bottom.label.col = &amp;quot;white&amp;quot;,
+          # dendrogram
+          row.dendrogram = T,
+          # top plot
+          yt = sapply(mtcars, function(x) cor(x, mtcars$hp)),
+          yt.plot.type = &amp;quot;bar&amp;quot;,
+          yt.axis.name = &amp;quot;correlation\nwith\nhorsepower&amp;quot;,
+          # column order
+          order.cols = order(sapply(mtcars, function(x) cor(x, mtcars$hp))),
+          # grid lines
+          grid.vline.col = &amp;quot;white&amp;quot;,
+          grid.hline.col = &amp;quot;white&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/blog/2017-02-05-superheat-cran_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;864&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to Present Good</title>
+      <link>/blog/2017-02-02-how-to-present-good/</link>
+      <pubDate>Thu, 02 Feb 2017 09:44:30 -0800</pubDate>
+      
+      <guid>/blog/2017-02-02-how-to-present-good/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;p&gt;This week I was asked to give a presentation on giving presentations.&lt;/p&gt;
+&lt;p&gt;So meta.&lt;/p&gt;
+&lt;p&gt;Anyway, my lack of desire to spend time writing something that may have already been written by someone else led me to find a number of existing slides written by others with the same goal: to present on presenting. The only problem was that although these slides all contained excellent tips on making and subsequently presenting talks, the slides themselves were perfect examples of what &lt;em&gt;not&lt;/em&gt; to do when making slides; they were insurmountable walls of text.&lt;/p&gt;
+&lt;p&gt;I decided that I would have to make my own slides after all. The final product can be found &lt;a href=&#34;../slides/presenting.pdf&#34;&gt;here&lt;/a&gt; and is embedded below:&lt;/p&gt;
+&lt;iframe src=&#34;https://docs.google.com/presentation/d/1cbwpLcEhHxz-FcMh99dlboBrXUDAIrzRJE7mu9uFmGU/embed?start=false&amp;amp;loop=false&amp;amp;delayms=5000&#34; frameborder=&#34;0&#34; width=&#34;960&#34; height=&#34;569&#34; allowfullscreen=&#34;true&#34; mozallowfullscreen=&#34;true&#34; webkitallowfullscreen=&#34;true&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Read on for a more in-depth glimpse into my presentation pro-tips&lt;/p&gt;
+&lt;div id=&#34;dedicate-a-lot-of-time&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Dedicate a lot of time&lt;/h2&gt;
+&lt;p&gt;Making good slides takes time. You not only have to think about what you want to say, but also &lt;em&gt;how&lt;/em&gt; to say it, as well as how to arrange your slide so that it is not overwhelming yet still gets your point across.&lt;/p&gt;
+&lt;p&gt;Even making these fairly simple slides on presenting took me an hour and a half!&lt;/p&gt;
+&lt;p&gt;There is a quote by someone or other that says&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For every minute you speak an hour should be spent in preparation. So for a 60 minute seminar, one should work for 60 hours.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While this is clearly excessive, the point is clear: making a good presentation will take time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;consider-your-audience&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Consider your audience&lt;/h2&gt;
+&lt;p&gt;Giving the same presentation to vastly different groups of people is a definite no-no. For example, when I’m presenting to my biological collaborators, I need to simplify the technical details and can focus less on the biology background than when I’m presenting to my more data-literate peers. On the other hand, if I’m presenting to a lay-audience who is unfamiliar with both the technical details of the methods I’m using as well as the biology, I will remove all mathematical notation and stick to explanatory pictures that describe what I’m doing.&lt;/p&gt;
+&lt;p&gt;On that note, statisticians tend to fill their slides with far too much math even for a technical audience. Even the most accomplished statisticians cannot absorb all that notation at once! Whenever possible, try to use annotated graphics in place of equations.&lt;/p&gt;
+&lt;p&gt;One tip to try to tailor your talk to your audience is to ask the following questions:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How much background does my audience have?&lt;/strong&gt; If they have a strong math background, I can assume that they know the basics and don’t need to explain them in excruciating detail, but if they don’t know any biology, I need to give a very simple explanation in lay-terms of the how the process works.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What is it that I want my audience to take away from my presentation?&lt;/strong&gt; If I want them to be able to walk away and implement my method, I will give many more details, but if, as is more likely the case, I simply want them to have a broad understanding of why my project is important and how I’ve solved the problem at hand, then I can keep most of the details to myself and present a very high-level picture.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tell-a-story&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Tell a story&lt;/h2&gt;
+&lt;p&gt;Everyone enjoys a good story (but few people truly enjoy listening to a long, dry proof). Your talk should follow a structure as follows:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The setup&lt;/strong&gt;: what is the context?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The issue&lt;/strong&gt;: what was the problem that prompted your project?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The resolution&lt;/strong&gt;: what steps did you take to solve the problem? What’s are the next steps?&lt;/p&gt;
+&lt;p&gt;For example, I am currently working on a project involving kidney transplants in HIV patients. My story is as follows:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The setup&lt;/strong&gt;: due to prolonged survival of HIV patients, additional complications including HIV-associated nephrology (kidney disease) are becomming more common resulting in an increased demand for kidney transplants among this population.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The issue&lt;/strong&gt;: HIV-positive kidney transplant patients suffer from acute rejection of their transplanted kidney at a significantly higher rate than their HIV-negative counterparts.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The resolution&lt;/strong&gt;: we are developing models for predicting acute rejection in the hopes of elucidating the cause of this increased rejection rate.&lt;/p&gt;
+&lt;div id=&#34;transition-slides&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Transition slides&lt;/h3&gt;
+&lt;p&gt;Transition slides are a great way to separate one part of your story from another. Their presence serves to indicate to the audience that you’re moving onto something new. They are particularly effective if your main content slides and your transition slides have different color templates. For example in the presentation above, the content slides have a white background and black text (with a blue heading), but the transition slides have a blue background with white text.&lt;/p&gt;
+&lt;p&gt;The stark difference between content and transition is an incredibly effective way to teach the audience that a blue slide with white text means that we’re moving onto something new.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outlines&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Outlines&lt;/h2&gt;
+&lt;p&gt;People really like outlines (that slide at the beginning of your talk that describes its contents). I happen to think outlines are great, it’s just that most people are terrible at making them.&lt;/p&gt;
+&lt;p&gt;An example of a terrible outline is as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Motivation&lt;/li&gt;
+&lt;li&gt;Literature review&lt;/li&gt;
+&lt;li&gt;Contributions&lt;/li&gt;
+&lt;li&gt;Results&lt;/li&gt;
+&lt;li&gt;Conclusion&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Well that’s fairly useless. Of course your talk is going to begin with motivation, followed by a review of the literature, at which point you will move onto your contributions, show me some results and then conclude. This is the basic structure of every academic talk, ever.&lt;/p&gt;
+&lt;p&gt;A much better outline slide tells the audience what &lt;em&gt;you&lt;/em&gt; are going to talk about, not the skeletal structure of a general presentation.&lt;/p&gt;
+&lt;p&gt;For example, an outline for my kidney transplant project might look more like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Why HIV causes kidney disease&lt;/li&gt;
+&lt;li&gt;Outline of the UCSF Study&lt;/li&gt;
+&lt;li&gt;Cohort selection (and why we struggled with it)&lt;/li&gt;
+&lt;li&gt;Dynamic approaches to predicting rejection&lt;/li&gt;
+&lt;li&gt;And why they don’t work well (yet…)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;slide-contents&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Slide contents&lt;/h2&gt;
+&lt;div id=&#34;no-walls-of-text-please&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;No walls of text please!&lt;/h3&gt;
+&lt;p&gt;The golden rule of making presentations should be &lt;strong&gt;with text, less is always more&lt;/strong&gt;. There is a nice &lt;a href=&#34;http://blog.ted.com/10-tips-for-better-slide-decks/&#34;&gt;TED blog&lt;/a&gt; that has a nice paragraph discussing this point that I’m going to shamelessly drop here:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;One thing to avoid—slides with a lot of text, especially if it’s a repeat of what you’re saying out loud. It’s like if you give a paper handout in a meeting—everyone’s head goes down and they read, rather than staying heads-up and listening. If there are a lot of words on your slide, you’re asking your audience to split their attention between what they’re reading and what they’re hearing. That’s really hard for a brain to do, and it compromises the effectiveness of both your slide text and your spoken words. If you can’t avoid having text-y slides, try to progressively reveal text (like unveiling bullet points one by one) as you need it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I particularly like the point about how having a lot of text on your slides forces your audience to split their attention between reading and listening without achieving either goal successfully, because it’s &lt;em&gt;so true!&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;It’s important to realize that this holds true even if all of your text lives in bullet point format.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;font-size&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Font size&lt;/h3&gt;
+&lt;p&gt;One of the worst (but incredibly common) mistakes that people make when preparing slides is tiny font size. Anything smaller than 18pt is way too small! This is equally (possible, even more) true for figures. Pro-tip: make the axis labels, legend and annotations &lt;span style=&#34;font-size:larger;&#34;&gt;&lt;strong&gt;obnoxiously large&lt;/strong&gt;&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;images&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Images&lt;/h3&gt;
+&lt;p&gt;Images are a great way to lighten up your presentation. Try to find simple photos relevant to the point being made on the slide.&lt;/p&gt;
+&lt;p&gt;For example, I recently made a presentation that included a section on “Weak learners”, which are basically a number of classification models that each individually perform poorly (at least a little better than random guessing), but when pooled together made a powerful learning algorithm.&lt;/p&gt;
+&lt;p&gt;I included an image alongside my description displaying an army of soldiers. Get it?&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;http://static4.businessinsider.com/image/53a05de869bedd95242e6b76-1200-667/meereen-army-game-of-thrones.jpg&#34; alt=&#34;army&#34; style=&#34;width:400px;height:350px;&#34;&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-to-write-the-presentation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;How to write the presentation&lt;/h2&gt;
+&lt;p&gt;While I usually encourage people to start their slide preparation with a structural skeleton by&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Start with your transition slides that indicate the distinct sections of your talk,&lt;/li&gt;
+&lt;li&gt;Then add blank content slides with headers,&lt;/li&gt;
+&lt;li&gt;Finally fill in the content slides with content.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In practice, this isn’t quite what I do. While I will often start this way, as I start filling in the content, I will subsequently do a lot of moving things around, merging sections, and adding new ones.&lt;/p&gt;
+&lt;div id=&#34;repetition-for-emphasis&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Repetition for emphasis&lt;/h3&gt;
+&lt;p&gt;If there is something that is really crucial to your story say it many, many times. Often in &lt;strong&gt;bold font&lt;/strong&gt; and in a &lt;font color=&#34;red&#34;&gt;different color&lt;/font&gt;. Say it in different ways, and keep coming back to it verbally: “remember that here we &lt;em&gt;don’t&lt;/em&gt; have a control group, well blah blah blah”. Sometimes it’s okay to even tell your audience that you’re emphasizing something by saying something like “just in case it’s not obvious, I’m really trying to emphasize this point”.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;presenting-your-results&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Presenting your results&lt;/h2&gt;
+&lt;p&gt;Consider a slide containing the figure below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/blog/2017-02-02-how-to-present-good_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;How does this figure make you feel? Does it make you feel happy because of the pretty colors? Perhaps you’re just happy to see that the author used ggplot rather than base R plot…&lt;/p&gt;
+&lt;p&gt;To be honest, I think this plot is a mess; the colors are distracting, the axis labels are useless, the text is way too small and the heading “Results” is entirely uninformative.&lt;/p&gt;
+&lt;p&gt;Fortunately, there are many ways that we can make it better: we can&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;universally increase the font size,&lt;/li&gt;
+&lt;li&gt;highlight our method in bold and blue, while fading the competing methods into the background by shading them in grey,&lt;/li&gt;
+&lt;li&gt;give the figure informative axis names,&lt;/li&gt;
+&lt;li&gt;make an informative slide header with the take-away message that “our method has lower prediction error than the competitors”.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/blog/2017-02-02-how-to-present-good_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;768&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;For more tips like this, I encourage you to check out Cole Nussbaumer Knaflic’s book, &lt;a href=&#34;http://www.storytellingwithdata.com/book/&#34;&gt;&lt;em&gt;Storytelling with Data&lt;/em&gt;&lt;/a&gt;, which I really enjoyed. It is a great read if you want to learn how to present your figures to maximize impact and to use your data to tell a story.&lt;/p&gt;
+&lt;p&gt;Another important step to presenting results is to treat the audience like idiots. Trust me, they’ll appreciate it (mostly becauase they won’t realize that you’re doing it). Explain in excruciating detail what every single element of your figure means. For example, in presenting the plot above, rather than simply saying &lt;em&gt;“this plot shows that our method clearly outperforms our competitors”&lt;/em&gt;, I would say:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“In the figure on this slide, we are plotting the prediction &lt;em&gt;error&lt;/em&gt; rate over time. That means that the lower the error, the better. The x-axis depicts time, while the y-axis depicts the error rate at that time for each method reporesented by the three lines. Our method is highlighted in blue and we see that the error rate hovers around 10%, but that this is better than our competitors whose error rates tend to lie between 12 and 16% or so.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Just because your figure is obvious to you after having put a lot of thought into making the figure in the first place, that doesn’t mean that it is obvious to your audience who have viewed the figure for a total of 2 seconds.&lt;/p&gt;
+&lt;div id=&#34;presenting-many-plots-on-the-same-slide&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Presenting many plots on the same slide&lt;/h3&gt;
+&lt;p&gt;I have seen far to many presentations where the presenter moves to the next slide and, &lt;em&gt;BAM!&lt;/em&gt; - 10 plots that look almost identical are shoved in my face all at the same time. My brain subsequently has a meltdown and stops listening to a word the presenter is saying while I try to figure out what this army of plots is showing me.&lt;/p&gt;
+&lt;p&gt;Here is a simple example that I found on the interwebs:&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;https://hlplab.files.wordpress.com/2014/01/balancedexx1prime-effect-byexperiment.png&#34; alt=&#34;army&#34; style=&#34;width:400px;height:350px;&#34;&gt;
+&lt;/center&gt;
+&lt;p&gt;If you have to show a plot with many, many panels (perhaps from simulations under different paramter settings), then a much more effective way to present these results is to reveal them one-by-one, and explain what each plot shows as it is revealed, and how it compares to the previous plots.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;practice-makes-perfect&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Practice makes perfect&lt;/h2&gt;
+&lt;p&gt;After the slides are made it’s time to practice, practice, practice! Practice by yourself to ensure that your timing is correct and to reduce the number of &lt;em&gt;“um”&lt;/em&gt;s and &lt;em&gt;“er”&lt;/em&gt;s as you present. Then practice in front of other people, preferably in front of an actual screen so that you can figure out where to stand (or sit), what to do with your hands (they always seem to be in the way), and how to point at things (with a laser pointer? using your mouse? with a big stick?).&lt;/p&gt;
+&lt;p&gt;It is always a good idea to practice speaking slowly and clearly and to pause at each slide transition. Enthusiasm is encouraged - no one wants to listen to someone talk for an hour when &lt;em&gt;they&lt;/em&gt; dont even sound excited about what they’re presenting. Varying the tone of your voice is very helpful with exuding an aura of enthusiasm.&lt;/p&gt;
+&lt;p&gt;Eye contact is also vital. Why should your audience pay attention to you if you aren’t paying attention to them? If you are nervous, one idea is to pick a few spots in the back of the room, above people’s heads and look at those.&lt;/p&gt;
+&lt;p&gt;Lastly, my greatest tip of all is to use humour, but only if you feel comfortable doing so (I actually find that using humour helps me relax). But it’s never a good idea to force it.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Superheat: a simple example</title>
+      <link>/blog/2017-02-02-superheat-example/</link>
+      <pubDate>Thu, 02 Feb 2017 09:44:30 -0800</pubDate>
+      
+      <guid>/blog/2017-02-02-superheat-example/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;p&gt;Making beautiful and customizable heatmaps just got way easier… Introducing the superheat R package!&lt;/p&gt;
+&lt;p&gt;Using superheat, it is now extremely easy to produce plots like the example below describing 10 randomly selected cars from the famous &lt;code&gt;mtcars&lt;/code&gt; dataset.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(superheat)
+set.seed(1347983)
+selected.rows &amp;lt;- sample(1:nrow(mtcars), 10)
+X.col &amp;lt;- matrix(&amp;quot;black&amp;quot;, ncol = ncol(mtcars), nrow = 10)
+X.col[scale(mtcars[selected.rows, ]) &amp;lt; 0] &amp;lt;- &amp;quot;white&amp;quot;
+superheat(mtcars[selected.rows,], 
+          # add text
+          X.text = round(as.matrix(mtcars[selected.rows, ])),
+          X.text.col = X.col,
+          # scale columns
+          scale = T, 
+          # label aesthetics
+          left.label.size = 0.5,
+          bottom.label.size = 0.15,
+          bottom.label.text.angle = 90,
+          bottom.label.text.alignment = &amp;quot;right&amp;quot;,
+          bottom.label.col = &amp;quot;white&amp;quot;,
+          # dendrogram
+          row.dendrogram = T,
+          # top plot
+          yt = sapply(mtcars, function(x) cor(x, mtcars$hp)),
+          yt.plot.type = &amp;quot;bar&amp;quot;,
+          yt.axis.name = &amp;quot;correlation\nwith\nhorsepower&amp;quot;,
+          # column order
+          order.cols = order(sapply(mtcars, function(x) cor(x, mtcars$hp))),
+          # grid lines
+          grid.vline.col = &amp;quot;white&amp;quot;,
+          grid.hline.col = &amp;quot;white&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/blog/2017-02-02-superheat-example_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;864&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;To see more details on what you can do with superheat, see the &lt;strong&gt;&lt;a href=&#34;https://rlbarter.github.io/superheat/&#34;&gt;vignette&lt;/a&gt;&lt;/strong&gt;, as well as our &lt;a href=&#34;https://arxiv.org/abs/1512.01524&#34;&gt;paper outlining case studies using Superheat currently available on arXiv&lt;/a&gt;.&lt;/p&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Projects (details to come!)</title>
+      <link>/projects/</link>
+      <pubDate>Sun, 15 Jan 2017 21:49:57 -0700</pubDate>
+      
+      <guid>/projects/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;ongoing-projects&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Ongoing projects&lt;/h2&gt;
+&lt;div id=&#34;dynamically-predicting-acute-rejection-for-hiv-positive-kidney-transplant-patients&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Dynamically predicting acute rejection for HIV positive kidney transplant patients&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;superheat&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Superheat&lt;/h3&gt;
+&lt;p&gt;I made a super cool R package (&lt;a href=&#34;https://github.com/rlbarter/superheat&#34;&gt;github&lt;/a&gt;, &lt;a href=&#34;https://rlbarter.github.io/superheat/&#34;&gt;vignette&lt;/a&gt;, &lt;a href=&#34;https://arxiv.org/abs/1512.01524&#34;&gt;paper&lt;/a&gt;) for creating customizable, extendable, and beautiful heatmaps.&lt;/p&gt;
+&lt;p&gt;The motivation of the superheat package was to allow the user to visualize a design matrix, X, while simultaneously examining a response variable, y. Ideally, this would allow the viewer to explore how the independent variables and response are related to one another. However, we quickly realized that the applications are far more general than simply visualizing a supervised heatmap (hence the name, “superheat”), and we extended the usage to allow for a huge range of extensions to the heatmap.&lt;/p&gt;
+&lt;p&gt;It is extremely easy to produce plots like the example below describing 10 randomly selected cars from the famous &lt;code&gt;mtcars&lt;/code&gt; dataset. If you’re interested in producing this specific plot, see my &lt;a href=&#34;../blog/2017-02-02-superheat-example/index.html&#34;&gt;blog post&lt;/a&gt; displaying the code.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/projects_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;864&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Here is a video of me presenting superheat at the UseR! Conference 2016 at Stanford University.&lt;/p&gt;
+&lt;iframe src=&#34;https://channel9.msdn.com/Events/useR-international-R-User-conference/useR2016/Superheat-Supervised-heatmaps-for-visualizing-complex-data/player&#34; width=&#34;960&#34; height=&#34;540&#34; allowFullScreen frameBorder=&#34;0&#34;&gt;
+&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;div id=&#34;practical-statistics&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Practical statistics&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;past-projects&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Past projects&lt;/h2&gt;
+&lt;div id=&#34;pneumonia-or-copd&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Pneumonia or COPD?&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;network-based-biomarkers-for-melanoma&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Network-based biomarkers for melanoma&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gender Issues Roundtable Discussion: A Case Study in Uncomfortable Conversations</title>
+      <link>/blog/2016-12-15-gender-bias/</link>
+      <pubDate>Thu, 15 Dec 2016 21:49:57 -0700</pubDate>
+      
+      <guid>/blog/2016-12-15-gender-bias/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;p&gt;&lt;em&gt;by Kellie Ottoboni, Rebecca Barter, Ryan Giordano, Sara Stoudt&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In 2015, UC Berkeley experienced a series of high-profile sexual harassment incidents, prompting the graduate students in the Statistics Department to hold a roundtable event. While this response was initiated by overt sexual harassment, our discussion extended to other subtler gender biases. This article outlines the events that lead to the roundtable’s inception, the details of organizing and hosting the event, and our thoughts on what did and didn’t work.&lt;/p&gt;
+&lt;div id=&#34;the-situation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Situation&lt;/h3&gt;
+&lt;p&gt;The most high-profile incident involved &lt;a href=&#34;https://www.buzzfeed.com/azeenghorayshi/famous-astronomer-allegedly-sexually-harassed-students?utm_term=.eiZzwLkox#.daDAJnmxK&#34;&gt;Astronomy Professor Geoffrey Marcy, who was found in violation of campus policies&lt;/a&gt; after several women came forward accusing him of sexual harassment over the course of his tenure at UC Berkeley. To add insult to injury, upon uncovering details of the situation long before it became public, some claimed that the university mishandled the case by simply giving Marcy &lt;a href=&#34;http://www.latimes.com/local/abcarian/la-me-ra-abcarian-astronomer-resigns-20151019-column.html&#34;&gt;a metaphorical slap on the wrist&lt;/a&gt;. It was not until faculty in his department circulated an open letter of disapproval that Marcy finally stepped down from his position.&lt;/p&gt;
+&lt;p&gt;It was becoming clear that sexual harassment was pervasive at all levels of the academic ladder and that such incidents were not being properly addressed or punished. While the campus scrambled to respond to the Marcy incident, several more stories received media attention: to name a few, an executive assistant at Berkeley Law &lt;a href=&#34;http://www.nytimes.com/2016/03/25/us/sexual-harassment-cases-tarnish-berkeleys-image-as-a-center-of-social-activism.html?_r=0&#34;&gt;accused the dean of the law school&lt;/a&gt; of inappropriately touching her and making her feel uncomfortable, for which he was found guilty; several undergraduate women came forward, stating that they sought help from various resources on campus after being sexually assaulted, only to be &lt;a href=&#34;http://www.huffingtonpost.com/2014/02/26/uc-berkeley-rape-students-complaint_n_4855816.html&#34;&gt;dismissed and not taken seriously&lt;/a&gt; by the officials charged with protecting them; and the &lt;a href=&#34;http://www.dailycal.org/2015/04/13/vice-chancellor-who-announced-resignation-thursday-denies-allegations-of-sexual-harassment/&#34;&gt;Vice Chancellor of Research resigned&lt;/a&gt; amid an investigation of alleged sexual harassment of a former employee. In fact, there have been reports of a whopping &lt;a href=&#34;http://www.dailycal.org/2016/04/06/in-past-seven-years-19-campus-employees-violated-sexual-harassment-policies/&#34;&gt;19 campus employees violating sexual harassment policies&lt;/a&gt; since 2009.&lt;/p&gt;
+&lt;p&gt;As the scope of these offenses became public, the campus responded by creating new leadership roles to combat sexual harassment. However, many of these actions appeared only to signal that the campus was aware of the problem rather than directly providing support to students, faculty, and staff on campus.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;initiating-the-rountable-event&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Initiating the Rountable Event&lt;/h3&gt;
+&lt;p&gt;To take tangible steps, the chair of the Statistics Department, Michael Jordan, asked the&lt;a href=&#34;http://sgsa.berkeley.edu&#34;&gt; Statistics Graduate Student Association (SGSA)&lt;/a&gt; to host a departmental event about these issues. The idea was to have a meeting for the students that was run by the students rather than a mandatory meeting held by an administrator. Professor Jordan’s suggestion was to center the meeting around “case studies” of gender bias and sexual harassment. Typical sexual harassment trainings exclusively feature case studies of behavior that are so obviously inappropriate that we felt that such scenarios offer little to discuss. Instead, we decided to focus the case studies on more common, yet subtler, experiences of implicit biases and gender-based discrimination. Furthermore, we thought that it would be more impactful if the scenarios we discussed were not fictional but were real stories from our colleagues. Most, if not all, women we know have experienced some form of gender biases or sexual harassment. We subsequently created a form for our colleagues to anonymously submit an anecdote describing a situation that they or someone who they know experienced. With a collection of anonymous stories, we could discuss case studies like is done in a typical sexual harassment training but could bring the discussion closer to home.&lt;/p&gt;
+&lt;p&gt;We reached out to several groups on campus for guidance on how to run the event in a way that would be not just useful and informative but would also encourage participation and open discussion of the issues. Maria Lucero-Padilla from the Office for Prevention of Harassment and Discrimination (OPHD) generously shared many materials and guidelines with us in preparation for our discussion. She helped us identify themes among the case studies we collected and give structure to the conversation. We would like to thank her for her help.&lt;/p&gt;
+&lt;p&gt;Our first gender biases roundtable discussion in 2015 was met with overwhelmingly positive responses, and we decided to repeat the event in 2016 with new case studies and new themes. However, we strongly believe that the conversation about gender issues is not over. By writing about our experience running this event, we hope to teach others holding similar events the lessons we learned and to get feedback on how to expand this program to encompass other types of diversity beyond gender.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;planning-and-running-the-roundtable-event&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Planning and Running the Roundtable Event&lt;/h3&gt;
+&lt;div id=&#34;the-planning-committee&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The planning committee&lt;/h4&gt;
+&lt;p&gt;In order to emphasize that participation in such a discussion is important for both men and women, we decided to enlist members of both genders to help plan and run the meeting. A meeting run only by men runs the risk of being construed as condescending or “mansplaining,” whereas a meeting run only by women might make male attendees feel uncomfortable and attacked. We recognize that not all individuals identify with this gender binary; however, all participants from our department identified with one of these two genders, so we chose to draw this distinction when reflecting on participants’ roles and experiences.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;collecting-anecdotes&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Collecting anecdotes&lt;/h4&gt;
+&lt;p&gt;The first year, we circulated a call for submissions and a form to submit anonymous anecdotes to women in the Statistics Department and a limited number of people involved with diversity issues at the Berkeley Institute for Data Science (BIDS). The second year, we circulated the form more widely to the entire Statistics Department and to all affiliates at BIDS. Both times, we received fewer than 10 submissions of stories.&lt;/p&gt;
+&lt;p&gt;Although they were submitted anonymously, it was apparent by the context of the stories that the responders were either postdoctoral scholars or faculty rather than PhD or MA students. There are a number of possible reasons for this: these more senior individuals have been in academia longer (especially during times when the workforce was a much more difficult place for women than it is today), have participated in a wider breadth of activities, have progressed through more stages of life, and have thus had more time to accumulate experiences.&lt;/p&gt;
+&lt;p&gt;It is also possible that female graduate students in our department chose not to submit anecdotes because they were anxious about sharing them either because they felt they’ll be judged or because the stories involved men in the department who participants might recognize. It is also possible that they really haven’t encountered any biases (or simply did not recognize such biases when faced with them), in which case statistics is a very special field.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;choosing-anecdotes&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Choosing anecdotes&lt;/h4&gt;
+&lt;p&gt;Several common themes emerged in the gender bias anecdotes we received. Some stories observed competitions in which the woman was subtly undermined (e.g., when hiring new faculty). Several women described repeatedly being seen as the “token woman” (e.g., being asked about babies instead of about research or being the first woman ever hired in a department). Several anecdotes about sexual harassment involved status and power dynamics (e.g., students writing inappropriate comments to their GSI in evaluations and tensions between colleagues in the same lab).&lt;/p&gt;
+&lt;p&gt;We chose several anecdotes to discuss. In the first year, two were about implicit biases related to hiring decisions and one was about sexual harassment in a teaching role. In the second year, we used four anecdotes covering implicit bias, sexual harassment by a colleague, sexual harassment by a student, and the issue of getting senior leaders to value diversity.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;during-the-event&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;During the event&lt;/h4&gt;
+&lt;p&gt;The meetings lasted for about two hours and were held in the evening (from 5:00 to 7:00 p.m.) in order to minimize conflicts with class times. Professor Jordan kindly funded dinner in order to encourage attendance. Both years, we had around 16 attendees. The group was about three-quarters male, which reflects the gender ratio in the department.&lt;/p&gt;
+&lt;p&gt;We began the meeting by explaining ground rules for the discussion (1. Focus on the statement, not the speaker; 2. Assume the best intentions of the speaker; 3. Listen and try not to feel personally attacked) and a short listening exercise in pairs, which set the tone of the discussion nicely. We found that because we set expectations for the discussion, people were more receptive to discussing uncomfortable topics and were ready to respectfully listen to each other.&lt;/p&gt;
+&lt;p&gt;Next, we talked about the anecdotes. During this portion of the meeting, we presented one case study at a time and asked the participants to form small groups of three to four in order to discuss the story for five minutes, providing them some guiding themes or questions. Afterwards, we invited volunteers from the groups to tell the whole room something interesting that they talked about.&lt;/p&gt;
+&lt;p&gt;Finally, both years, we concluded by asking the group what next steps the SGSA should take to grow its diversity and inclusion efforts in the future. After the first year, the question was whether people wanted to repeat such meetings in the future. The response was positive. After the second year, we asked about how we might expand the scope of such meetings to include other aspects of diversity beyond gender and how to include the entire department in larger discussions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;lessons-learned&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Lessons Learned&lt;/h3&gt;
+&lt;p&gt;Below, we outline some of the main factors that we believe contributed to the success of the roundtable events.&lt;/p&gt;
+&lt;div id=&#34;small-group-discussions-are-a-good-way-to-encourage-participation&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Small group discussions are a good way to encourage participation&lt;/h4&gt;
+&lt;p&gt;Based on our observations, it looked like everyone in the small groups spoke to each other. When we brought the discussion back to the whole table, only a few outgoing people volunteered ideas. Forming small groups allows even the quietest people to participate because they don’t feel like the spotlight is on them.&lt;/p&gt;
+&lt;p&gt;There may be some need to informally “spread out” the women participants to various small groups so that each small group benefits from perspectives from both genders. Although we recognize that it can be difficult to be the lone representative of women in a group, the gender ratio of participants necessitated this.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;individuals-enjoy-and-benefit-from-this-event-regardless-of-their-gender&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Individuals enjoy and benefit from this event regardless of their gender&lt;/h4&gt;
+&lt;p&gt;We thought hard about how to keep the discussion from being a rote affirmation of what we all already know are the social norms around sexism. There is a danger in these types of events that everyone goes through the motions that we know are expected of us without really gaining any new perspective on gender issues.&lt;/p&gt;
+&lt;p&gt;We wanted the roundtable to be the kind of discussion that would allow people to express contradicting opinions and come in contact with genuinely different points of view. To facilitate this, we chose anecdotes that were relatively ambiguous incidents that might seem superficially minor but become problematic when viewed in the context of what women deal with in a sexist society. This both allowed participants to freely advocate for opinions that would not have been politically correct had the incidents been more serious and enabled women to share the many reasons why a seemingly innocuous incident could be hurtful or dangerous.&lt;/p&gt;
+&lt;p&gt;Women often talk about such issues with each other but rarely with men. It is satisfying to have this conversation openly and have the opposite sex hear about the issues that women face. The case study submission format encourages this: everyone knows that these are real stories that have happened to people who we probably know and interact with.&lt;/p&gt;
+&lt;p&gt;On the other hand, some feedback that we got from men who attended was that they liked having a venue to discuss gender issues candidly because they rarely have the opportunity. It is something they care about, but they do not know how to bring up the subject themselves.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-event-works-well-when-the-participants-know-each-other&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The event works well when the participants know each other&lt;/h4&gt;
+&lt;p&gt;In this regard, the timing of the event and group dynamics worked in our favor. The Statistics Department has around 50 PhD students, with eight to 12 per incoming cohort. Students take many of the same classes together during their first year, so they get to know each other well after several months. We held this event at the end of November. By this time, most of the new PhD students had met each other and were comfortable together.&lt;/p&gt;
+&lt;p&gt;This level of familiarity lowered the barrier to having an open discussion about uncomfortable issues. Contrast this with the typical mandatory sexual harassment training, which often occurs at the beginning when someone joins a new program.&lt;/p&gt;
+&lt;p&gt;In a room full of strangers, we imagine that it would be much more difficult to candidly discuss subtle issues about gender bias. Thus, it is important to invite an intimate group of people to participate in such a roundtable discussion. Note, however, the converse of this statement is that given a different group of people, running an identical event might not go well.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;participation-is-greatly-enhanced-by-encouragement-from-senior-faculty-members&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Participation is greatly enhanced by encouragement from senior faculty members&lt;/h4&gt;
+&lt;p&gt;The downside of having the discussion later on in the semester is that it often ends up being around “crunch time” for students. Email encouragements from both senior graduate students and the Department Chair as well as in-person discussion of the upcoming event at informal department gatherings helped boost the number who RSVP’d “yes.” In both years, a good mix of class years attended.&lt;/p&gt;
+&lt;p&gt;Getting volunteers to help lead future events is trickier. Participants agreed that future discussions should be extended to include broader themes of diversity, such as race, sexuality, and gender identity, but so far, nobody has volunteered to help organize a broader diversity discussion. The tension here is that the students currently leading the gender discussion (three Caucasian females and a Caucasian male) feel that they cannot speak to other aspects of diversity, yet actively targeting others to take on that role can be problematic.&lt;/p&gt;
+&lt;p&gt;Perhaps opening up the discussion to joint venues with representation from other departments would help increase the pool of those willing to take on facilitator roles at the expense of having a group that is less familiar with one another.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;next-steps&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Next Steps&lt;/h3&gt;
+&lt;p&gt;We plan to continue holding this type of discussion at least once a year and expand the content to include all aspects of diversity. We hope to recruit additional leaders to help represent a broader base of diversity.&lt;/p&gt;
+&lt;p&gt;Any suggestions for how to move forward with these discussions or expand this program to other venues would be welcome.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The only reason one should ever use a pie chart</title>
+      <link>/blog/2015-07-23-pie/</link>
+      <pubDate>Sat, 10 Dec 2016 21:49:57 -0700</pubDate>
+      
+      <guid>/blog/2015-07-23-pie/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;pie-charts-are-terrible&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Pie charts are terrible&lt;/h1&gt;
+&lt;p&gt;Pie charts are notoriously terrible for data visualization. Humans are genuinely bad at comparing angles. Thus, the only reason one should ever use a pie chart is to make beautiful pie-chart-art.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
+pie(
+  c(280, 60, 20),
+  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
+  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
+  init.angle = -50, border = NA
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;#####../content/blog/2015-07-23-pie_files/figure-html/pie-1.png&#34; alt=&#34;Pyramid pie chart art.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: Pyramid pie chart art.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About Rebecca</title>
+      <link>/about/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>/about/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;p&gt;Hi there! I’m Rebecca Barter. I’m so glad you’ve made it to my page.&lt;/p&gt;
+&lt;p&gt;I’m currently a third-year PhD student in the &lt;a href=&#34;http://statistics.berkeley.edu&#34;&gt;Department of Statistics&lt;/a&gt; at UC Berkeley, as well as a Data Science Fellow at the &lt;a href=&#34;https://bids.berkeley.edu&#34;&gt;Berkeley Institute for Data Science (BIDS)&lt;/a&gt;. I am jointly advised by Professors &lt;a href=&#34;https://www.stat.berkeley.edu/~binyu/Site/Welcome.html&#34;&gt;Bin Yu&lt;/a&gt; (UC Berkeley),&lt;a href=&#34;http://sekhon.berkeley.edu&#34;&gt;Jasjeet Sekhon&lt;/a&gt; (UC Berkeley) and &lt;a href=&#34;http://sarwallab.surgery.ucsf.edu&#34;&gt;Minnie Sarwal&lt;/a&gt; (UCSF). Together with &lt;a href=&#34;http://www.stat.berkeley.edu/~kellieotto/&#34;&gt;Kellie Ottoboni&lt;/a&gt;, I am the co-president of the &lt;a href=&#34;http://sgsa.berkeley.edu&#34;&gt;Statistics Graduate Student Association&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Prior to arriving at UC Berkeley, I was an undergraduate, and subsequently a research assistant with &lt;a href=&#34;http://www.maths.usyd.edu.au/u/jeany/&#34;&gt;Professor Jean Yee Hwa Yang&lt;/a&gt;, at &lt;a href=&#34;https://sydney.edu.au/&#34;&gt;The University of Sydney&lt;/a&gt; in Australia, graduating in 2013 with Bachelor of Science (Advanced) and the University Medal in Statistics.&lt;/p&gt;
+&lt;p&gt;I am interested in a variety of problems in applied statistics primarily with applications in medicine, and am currently working on several projects related to data visualization, high dimensional (possibly, but probably not, “big”) data analysis and causal inference. My primary project is in collaboration with the Sarwal lab in the Department of Surgery at UCSF where we are evaluating large quantities of data with the goal of predicting acute rejection in HIV-positive kidney transplant patients.&lt;/p&gt;
+&lt;p&gt;I am the author of the &lt;a href=&#34;https://github.com/rlbarter/superheat&#34;&gt;superheat&lt;/a&gt; R package for creating beautiful and customizable heatmaps in R.&lt;/p&gt;
+&lt;p&gt;Having an underlying enthusiasm for demystifying the wonderful world of statistics, I tend to spend a lot of time communicating the philosophy and methodology of statistics to others via both teaching and writing. In particular, I am currently satisfying my craving for educating others by co-authoring a book on data science together with my advisor, Bin Yu.&lt;/p&gt;
+&lt;p&gt;I usually spend my free time out hiking, knitting, practicing yoga or making music.&lt;/p&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Contact Me</title>
+      <link>/contact/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>/contact/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;p&gt;If you’d like to get in touch, feel free to email me at &lt;a href=&#34;mailto:rebeccabarter@berkeley.edu&#34;&gt;rebeccabarter@berkeley.edu&lt;/a&gt;.&lt;/p&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rebecca&#39;s CV</title>
+      <link>/cv/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>/cv/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;experience&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Experience&lt;/h2&gt;
+&lt;p&gt;August 2014 - present &lt;strong&gt;Graduate Student Researcher (GSR)&lt;/strong&gt;, &lt;em&gt;Department of Statistics, University of California, Berkeley&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;November 2016 - present &lt;strong&gt;Visiting Student&lt;/strong&gt;, &lt;em&gt;Department of Surgery, University of California, San Francisco&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;May 2016 - August 2016 &lt;strong&gt;Quantitative Analyst Intern&lt;/strong&gt;, &lt;em&gt;Google, Seattle&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Spring 2015, Fall 2016 &lt;strong&gt;Statistical Consultant&lt;/strong&gt;, &lt;em&gt;Department of Statistics, University of California, Berkeley&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;February 2014 - July 2014 &lt;strong&gt;Research Assistant&lt;/strong&gt;, &lt;em&gt;Melanoma Institute Australia and School of Mathematics and Statistics, The University of Sydney Australia&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;education&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Education&lt;/h2&gt;
+&lt;p&gt;(current) &lt;strong&gt;PhD, Statistics&lt;/strong&gt; , &lt;em&gt;University of California, Berkeley&lt;/em&gt;, Expected Graduation 2019&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bachelor of Science (Advanced) (First Class Honours and University Medal in Statistics)&lt;/strong&gt;, &lt;em&gt;The University of Sydney, Australia&lt;/em&gt;, Graduated November 2013&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;papers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Papers&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Barter RL&lt;/strong&gt;, Yu B (2017). Superheat: Supervised heatmaps for visualizing complex data, &lt;em&gt;(preprint) arXiv&lt;/em&gt; &lt;a href=&#34;http://arxiv.org/abs/1512.01524&#34; class=&#34;uri&#34;&gt;http://arxiv.org/abs/1512.01524&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Barter RL&lt;/strong&gt;, Schramm SJ, Mann GJ, and Yang YH (2014). Network-based biomarkers enhance classical approaches to prognostic gene expression signatures, &lt;em&gt;BMC Systems Biology&lt;/em&gt; &lt;a href=&#34;http://www.biomedcentral.com/1752-0509/8/S4/S5&#34;&gt;www.biomedcentral.com/1752-0509/8/S4/S5&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;software&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Software&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rlbarter/superheat&#34;&gt;&lt;strong&gt;superheat&lt;/strong&gt;&lt;/a&gt;, An R package with tools for visualizing and exploring data using supervised heatmaps.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;teaching-experience&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Teaching Experience&lt;/h2&gt;
+&lt;p&gt;Spring 2015 &lt;strong&gt;Graduate Student Instructor (GSI)&lt;/strong&gt;, &lt;em&gt;Department of Statistics, University of California, Berkeley&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./teaching&#34;&gt;STAT 135&lt;/a&gt; Concepts in Statistics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;March 2013 - July 2014 &lt;strong&gt;Tutor&lt;/strong&gt;, &lt;em&gt;School of Mathematics and Statistics, The University of Sydney Australia&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PHAR 2183 Theraputic Principles (Mathematics and Statistics Tutorial)&lt;/li&gt;
+&lt;li&gt;MATH 1902 Linear Algebra (Advanced)&lt;/li&gt;
+&lt;li&gt;MATH 1005 Statistics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Teaching Materials</title>
+      <link>/teaching/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>/teaching/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;spring-2015-stat-135-concepts-in-statistics&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Spring 2015: STAT 135 Concepts in Statistics&lt;/h2&gt;
+&lt;p&gt;
+Lab 2: Confidence intervals, MLE and the delta method &lt;a href=&#34;pdf/Lab2.pdf&#34; title=&#34;Lab 2&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lab 3: Asymptotic MLE and the method of moments &lt;a href=&#34;pdf/Lab3.pdf&#34; title=&#34;Lab 3&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lab 4: Recap, efficiency, sufficiency, bias-variance trade-off (Rao-Blackwell), Bayesian inference &lt;a href=&#34;pdf/Lab4.pdf&#34; title=&#34;Lab 4&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lab 5: Bootstrapping and hypothesis testing &lt;a href=&#34;pdf/Lab5.pdf&#34; title=&#34;Lab 5&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lab 6: Duality of hypothesis testing and confidence intervals, GLRT, Pearson Chi-squared tests and Q-Q plots &lt;a href=&#34;pdf/Lab6.pdf&#34; title=&#34;Lab 6&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lab 7: Distributions derived from the normal distribution, and comparing independent samples &lt;a href=&#34;pdf/Lab7.pdf&#34; title=&#34;Lab 7&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lab 8: Hypothesis testing review, Mann-Whitney test by normal approximation, and Wilcoxon signed rank test &lt;a href=&#34;pdf/Lab8.pdf&#34; title=&#34;Lab 8&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lab 9: Multiple testing, one-way ANOVA and Kruskal-Wallis &lt;a href=&#34;pdf/Lab9.pdf&#34; title=&#34;Lab 9&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lab 10: Two-way ANOVA, randomized block design and Friedman’s test &lt;a href=&#34;pdf/Lab10.pdf&#34; title=&#34;Lab 10&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lab 11: Tests for categorical data (Fisher’s exact test, Chi-squared tests for homogeneity and independence) and linear regression &lt;a href=&#34;pdf/Lab11.pdf&#34; title=&#34;Lab 11&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lab 12: Multiple linear regression (matrix form), residual analysis and inference for OLS &lt;a href=&#34;pdf/Lab12.pdf&#34; title=&#34;Lab 12&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lab 13: Linear regression, multivariate random variables, prediction, logistic regression and the delta-method &lt;a href=&#34;pdf/Lab13.pdf&#34; title=&#34;Lab 13&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Review: Hypothesis testing flow chart &lt;a href=&#34;pdf/Hypothesis_testing_flow_mean.pdf&#34; title=&#34;Hypothesis Testing Flow Chart&#34;&gt;(pdf)&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
     
   </channel>
 </rss>
