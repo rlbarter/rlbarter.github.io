@@ -1,8 +1,7 @@
 ---
 title:  "Docathon: A Week of Doumentation"
 author: "Rebecca Barter"
-categories: [introduction]
-tags: [anova]
+categories: [Documentation, R, Communication]
 date: 2017-03-07T21:13:14-05:00
 type: "post" 
 description: "We're hosting a week-long docathon over at BIDS." 
