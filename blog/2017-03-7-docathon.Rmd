@@ -8,7 +8,7 @@ type: "post"
 description: "We're hosting a week-long docathon over at BIDS." 
 ---
 
-This week is the [Docathon](https://bids.github.io/docathon/), hosted at [BIDS](https://bids.berkeley.edu/) (a.k.a. that wonderful place that I spend all my time). 
+This week is the [Docathon](https://bids.github.io/docathon/) at [BIDS](https://bids.berkeley.edu/) (a.k.a. that wonderful place that I spend all my time). 
 
 A docathon is like a hackathon but is focused on developing material and tools for documentation. We have [loads of projects](https://bids.github.io/docathon/pages/projects/projects.html) signed up to receive some documentation-love and an impressive number of excited participants!
 
