@@ -19,7 +19,7 @@
 
 /BLOGDOWN-BODY-BEFORE --&gt;
 
-&lt;p&gt;This week is the &lt;a href=&#34;https://bids.github.io/docathon/&#34;&gt;Docathon&lt;/a&gt;, hosted at &lt;a href=&#34;https://bids.berkeley.edu/&#34;&gt;BIDS&lt;/a&gt; (a.k.a. that wonderful place that I spend all my time).&lt;/p&gt;
+&lt;p&gt;This week is the &lt;a href=&#34;https://bids.github.io/docathon/&#34;&gt;Docathon&lt;/a&gt; at &lt;a href=&#34;https://bids.berkeley.edu/&#34;&gt;BIDS&lt;/a&gt; (a.k.a. that wonderful place that I spend all my time).&lt;/p&gt;
 &lt;p&gt;A docathon is like a hackathon but is focused on developing material and tools for documentation. We have &lt;a href=&#34;https://bids.github.io/docathon/pages/projects/projects.html&#34;&gt;loads of projects&lt;/a&gt; signed up to receive some documentation-love and an impressive number of excited participants!&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;../img/docathon/docathon.jpg-large&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We kicked off the event with a series of tutorials for writing “good” documentation. I gave an R-specific tutorial where I discussed using devtools to both develop and document your package. I ended with a sneak peak into bookdown book-based documentation for complex packages. Skip ahead to 1:54:02 to hear my presentation!&lt;/p&gt;
