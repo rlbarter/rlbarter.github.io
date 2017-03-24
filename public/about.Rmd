@@ -16,4 +16,4 @@ I am the author of the [superheat](https://github.com/rlbarter/superheat) R pack
 
 Having an underlying enthusiasm for demystifying the wonderful world of statistics, I tend to spend a lot of time communicating the philosophy and methodology of statistics to others via both teaching and writing. In particular, I am currently satisfying my craving for educating others by co-authoring a book on data science together with my advisor, Bin Yu.
 
-I usually spend my free time out hiking, knitting, practicing yoga or making music.
+I usually spend my free time out hiking, knitting, practicing yoga or making music, and I recently started climbing rocks.

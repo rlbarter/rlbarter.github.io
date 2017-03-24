@@ -36,14 +36,20 @@ Sydney, Australia*, Graduated November 2013
 
 ------
 
-## Papers
+## Publications
 
 **Barter RL**, Yu B (2017). Superheat: Supervised heatmaps for visualizing
 complex data, *(preprint) arXiv*  [http://arxiv.org/abs/1512.01524 ](http://arxiv.org/abs/1512.01524)
 
 
 **Barter RL**, Schramm SJ, Mann GJ, and Yang YH (2014). Network-based biomarkers enhance classical approaches to prognostic gene expression signatures, *BMC Systems Biology* [www.biomedcentral.com/1752-0509/8/S4/S5](http://www.biomedcentral.com/1752-0509/8/S4/S5)
+
+
+### On the web
+
+**Barter RL**, Shrotriya S (2016). Integrated Data Analysis for Early Warning of Lung Failure. The Geisinger Collider Competition Winning Project. *ODBMS* [http://www.odbms.org/2016/06/integrated-data-analysis-for-early-warning-of-lung-failure/](http://www.odbms.org/2016/06/integrated-data-analysis-for-early-warning-of-lung-failure/)
                     
+                  
 ------
 
 ## Software
@@ -53,6 +59,11 @@ complex data, *(preprint) arXiv*  [http://arxiv.org/abs/1512.01524 ](http://arxi
 ------
 					
 ## Teaching Experience
+
+March 2017 - **Docathon Instructor**, Berkeley Institute of Data Science
+
+- [Documentation in R](https://github.com/rlbarter/R-documentation) ([presentation](https://www.youtube.com/watch?v=ikT_xnTFHC0))
+
 Spring 2015 **Graduate Student Instructor (GSI)**,
 *Department of Statistics, University of
 California, Berkeley*
@@ -62,11 +73,26 @@ California, Berkeley*
 March 2013 - July 2014 **Tutor**, *School of Mathematics and
 Statistics, The University of Sydney Australia*
 
-- PHAR 2183 Theraputic Principles (Mathematics and Statistics
+- PHAR 2183 Therapeutic Principles (Mathematics and Statistics
 Tutorial)
 - MATH 1902 Linear Algebra (Advanced)
 - MATH 1005 Statistics
 
 
 
+------
 
+## Community
+
+
+
+Spring 2017 **Founder and organizer**, [Practical Statistics](https://rlbarter.github.io/Practical-Statistics/)
+
+- I founded and organized Practical Statistics: a group of graduate students, post-docs and research staff from the Statistics department, BIDS and D-Lab who meet to teach each other about statistical topics that are widely used in science, but rarely taught to statisticians.
+
+
+
+
+2016/17 **Co-president**, [Statistics Graduate Student Association (SGSA)](http://sgsa.berkeley.edu/)
+
+- Together with Kellie Ottoboni, I acted as the head of the graduate student body for the statistics department. 
