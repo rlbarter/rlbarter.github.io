@@ -67,7 +67,7 @@ complex data, *(preprint) arXiv*  [http://arxiv.org/abs/1512.01524 ](http://arxi
 
 March 2017 - **Docathon Instructor**, Berkeley Institute of Data Science
 
-- [Documentation in R](https://github.com/rlbarter/R-documentation) ([presentation](https://www.youtube.com/watch?v=ikT_xnTFHC0))
+- [Documentation in R](https://github.com/rlbarter/R-documentation) ([video](https://www.youtube.com/watch?v=ikT_xnTFHC0))
 
 Spring 2015 **Graduate Student Instructor (GSI)**,
 *Department of Statistics, University of
@@ -113,7 +113,7 @@ Spring 2017 **Founder and organizer**, [Practical Statistics](https://rlbarter.g
 
 ### Conference Talks
 
-March 2017 - **Organ transplantation in the presence of HIV**, Berkeley Statistics Annual Research Symposium (BSTARS 2017).
+March 2017 - **Organ transplantation in the presence of HIV**, Berkeley Statistics Annual Research Symposium (BSTARS 2017). [<a href="talks/BSTARS_Transplantation.pdf" title="BSTARS">slides</a>]
 
 June 2016 - **Superheat: An R package for visualizing complex data**, UseR! 2016.
 
@@ -125,11 +125,13 @@ July 2014 - **Network-based biomarkers enhance classical approaches to prognosti
 
 ### Other Talks
 
-May 2017 - **The Role of Machine Learning in Computerized Decision Making for Clinical Decision Support Systems in Healthcare**, UC Davis.
+May 2017 - **The Role of Machine Learning in Computerized Decision Making for Clinical Decision Support Systems in Healthcare**, UC Davis. [<a href="talks/Davis_Healthcare.pdf" title="Davis slides">slides</a>]
 
-April 2017 - **Interactive Visualization in R**, SGSA Seminar Series.
+May 2017 - **Superheat: An R Package for Generating Beautiful, Extendable, Customizable Heatmaps**, Berkeley Institute for Data Science (BIDS) Faire 2017. [[video](https://youtu.be/iZqqe-R5c0I), <a href="talks/BIDS_Faire_Superheat.pdf" title="BIDS Faire slides">slides</a>]
 
-April 2016 - **Correlation vs Causation: Why the Media Gets it Wrong!**, UC Berkeley Cal Day 2016.
+April 2017 - **Interactive Visualization in R**, SGSA Seminar Series. [[slides](/img/talks/interactive_vis_slides.html)]
+
+April 2016 - **Correlation vs Causation: Why the Media Gets it Wrong!**, UC Berkeley Cal Day 2016. [<a href="talks/Cal_Day_Presentation.pdf" title="Cal Day">slides</a>]
 
 October 2015 - **Supervised heatmaps: An R tool for complex data visualization**, Center for the Science of Information (CSoI) Virtual Brown Bag Seminar.
 
