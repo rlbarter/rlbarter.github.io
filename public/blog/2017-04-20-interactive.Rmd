@@ -1,7 +1,7 @@
 ---
 title:  "Interactive visualization in R"
 author: "Rebecca Barter"
-categories: [Documentation, R, Communication]
+categories: [Visualization, R, Interactivity]
 date: 2017-04-20T21:13:14-05:00
 type: "post" 
 description: "Learn about creating interactive visualizations in R." 

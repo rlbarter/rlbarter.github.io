@@ -1,7 +1,7 @@
 ---
 title:  "Coolors: choosing color schemes"
 author: "Rebecca Barter"
-categories: [Documentation, R, Communication]
+categories: [Visualization, R]
 date: 2017-06-27T21:13:14-05:00
 type: "post" 
 description: "A really cool website for choosing color palattes" 
