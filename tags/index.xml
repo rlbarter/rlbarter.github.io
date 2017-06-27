@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Rebecca Barter</title>
-    <link>https://rlbarter.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Rebecca Barter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 15 Dec 2016 21:49:57 -0700</lastBuildDate>
     
-	<atom:link href="https://rlbarter.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Discussion</title>
-      <link>https://rlbarter.github.io/tags/discussion/</link>
+      <link>/tags/discussion/</link>
       <pubDate>Thu, 15 Dec 2016 21:49:57 -0700</pubDate>
       
-      <guid>https://rlbarter.github.io/tags/discussion/</guid>
+      <guid>/tags/discussion/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gender bias</title>
-      <link>https://rlbarter.github.io/tags/gender-bias/</link>
+      <link>/tags/gender-bias/</link>
       <pubDate>Thu, 15 Dec 2016 21:49:57 -0700</pubDate>
       
-      <guid>https://rlbarter.github.io/tags/gender-bias/</guid>
+      <guid>/tags/gender-bias/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pie charts</title>
-      <link>https://rlbarter.github.io/tags/pie-charts/</link>
+      <link>/tags/pie-charts/</link>
       <pubDate>Sat, 10 Dec 2016 21:49:57 -0700</pubDate>
       
-      <guid>https://rlbarter.github.io/tags/pie-charts/</guid>
+      <guid>/tags/pie-charts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R Markdown</title>
-      <link>https://rlbarter.github.io/tags/r-markdown/</link>
+      <link>/tags/r-markdown/</link>
       <pubDate>Sat, 10 Dec 2016 21:49:57 -0700</pubDate>
       
-      <guid>https://rlbarter.github.io/tags/r-markdown/</guid>
+      <guid>/tags/r-markdown/</guid>
       <description></description>
     </item>
     
