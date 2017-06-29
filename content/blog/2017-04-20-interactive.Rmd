@@ -145,19 +145,9 @@ g
 ```
 </center>
 
-### plotly: adding a slider
+It is also super easy to add a range slider to your visualization using `rangeslider()`.
 
-It is also super easy to add a range slider to your visualization.
 
-```{r eval = FALSE, warning=FALSE}
-g %>% rangeslider
-```
-
-<center>
-```{r echo = FALSE, fig.height = 5, fig.width = 8, warning=FALSE}
-g %>% rangeslider()
-```
-</center>
 
 
 ## Linking with Crosstalk
