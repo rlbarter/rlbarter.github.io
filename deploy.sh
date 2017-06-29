@@ -36,5 +36,5 @@ git commit -m "$MESSAGE"
 git push origin "$SOURCE"
 
 msg "Pushing the updated \`public\` folder to the \`master\` branch"
-git subtree push -f --prefix=public \
-	git@github.com:$USERNAME/$USERNAME.github.io.git master
+git subtree push --prefix=public git@github.com:$USERNAME/$USERNAME.github.io.git master
+msg "Done"
